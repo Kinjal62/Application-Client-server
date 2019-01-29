@@ -3,14 +3,32 @@ var postModel = require('../model/post.model');
 let postController = {};
 
 postController.addPost = function(req,res){
-
-var post = new postModel(req.body);
+	var userId = req.body.userId;
+	var post = new postModel(req.body);
 	post.save(function(err,savedpost){
 		console.log(err,savedpost);
-		res.send(savedpost);
+		if (err) { res.status(500).send(err); }
+		userModel
+		.findOne({_id: userId})
+		.exec((err, user)=>{
+			console.log(user);
+			if (err) {res.status(500).send(err);}
+			user.post.push(savedpost._id);
+			user.save();
+			res.status(200).send(savedpost);
+		})
 	})
-console.log(req.body);
+	console.log(req.body);
 }
+postController.addFriend = function(req,res){
+	var post = new postModel(req.body);
+	post.save(function(err,savedFriend){
+		console.log(err,savedFriend);
+		res.send(savedFriend);
+	})
+	console.log(req.body);
+}
+
 postController.deletePost = function(req,res){
 	var postid = req.params.id;
 	postModel.remove({_id:postid}, function(err,deletePost){
@@ -28,16 +46,46 @@ postController.updatePost = function(req,res){
 }
 
 postController.getPostById = function(req,res){
-	postModel.find({_id: req.params.id},function(err,foundUser)
-	{
-		res.send(err || foundUser);
+	postModel.find({_id: req.params.id},function(err,foundPosts){
+		res.send(err || foundPost);
 	})
 }
 
+
+
 postController.getPosts = function(req,res){
-	postModel.find({}).populate('users')
-	.exec(function(err,posts){
-		res.send(posts);
+	postModel.find({},function(err,posts){
+		res.send({posts:posts});
 	})
 }
+postController.getAllPost = function(req,res){
+	var userId = req.params.userId;
+	userModel
+	.findOne({_id: userId})
+	.populate('post')
+	.select('post')
+	.exec((err,result)=>{
+		if(err) { res.status(500).send(err); }
+		res.status(200).send(result);
+	})
+}
+postController.getFriendPost = function(req,res){
+	var currentUser = req.params.requestedUser;
+	console.log("id",req.params.requestedUser);
+	userModel.findOne({_id: currentUser})
+	.exec((err,result)=>{
+		if(err){
+			res.status(500).send(err);
+		}
+		userModel.find({'_id': {$in: result.friend}})
+		.populate('post')
+		.select('post')
+		.exec((err,posts)=>{
+			if(err){res.status(500).send(err);
+			}
+			console.log("posts",posts);
+			res.status(200).send(posts);
+		})
+	})
+}	
 module.exports = postController;

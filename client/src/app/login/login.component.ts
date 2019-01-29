@@ -18,9 +18,9 @@ export class LoginComponent implements OnInit {
 	//for login user
 	login(){
 		console.log(this.user);
-		this._userService.logIn(this.user).subscribe(res =>{
+		this._userService.logIn(this.user).subscribe((res:any) =>{
 			console.log(res);
-			localStorage.setItem('login',JSON.stringify(res));
+			localStorage.setItem('login',JSON.stringify(res.user));
 		this.router.navigate(['feeds']);
 		},error=>{
 			console.log(error);

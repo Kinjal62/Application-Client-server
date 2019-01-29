@@ -16,5 +16,22 @@ export class UserService {
 	logIn(body){
 		return this.http.post("http://localhost:8000/user/logIn", body);
 	}
-	
+	searchedUsers(key){
+		var query = "?key="+key
+		return this.http.get("http://localhost:8000/user"+query);
+	}
+	followUser(_id){
+		console.log("follow friend",_id);
+		var body = {requestedUser:JSON.parse(localStorage.getItem('login'))._id, userTobeFollowed:_id};
+		return this.http.post("http://localhost:8000/user/add-friend", body);
+	}
+	unFollowUser(_id){
+		console.log("unfollowUser",_id);
+		var body = {requestedUser:JSON.parse(localStorage.getItem('login'))._id, userTobeUnFollowed:_id};
+		return this.http.post("http://localhost:8000/user/unfollow-friend", body);
+	}
+	deleteToken() {
+		localStorage.removeItem('login');
+
+	}
 }

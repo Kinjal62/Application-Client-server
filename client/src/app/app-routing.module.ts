@@ -6,7 +6,9 @@ import { SignupComponent } from './signup/signup.component';
 import { FeedsComponent } from './feeds/feeds.component';
 import { ConnectionComponent } from './connection/connection.component';
 import { ChatComponent } from './chat/chat.component';
-
+import { AllpostComponent } from './allpost/allpost.component';
+import { AddpostComponent } from './addpost/addpost.component';
+import { SearchComponent } from './search/search.component';
 
 const routes: Routes = [
 { path: 'mywall', component: MywallComponent },
@@ -14,8 +16,10 @@ const routes: Routes = [
 { path: 'signup', component: SignupComponent},
 { path: 'feeds', component: FeedsComponent},
 { path: 'connection', component: ConnectionComponent},
-{ path: 'chat', component: ChatComponent}];
-
+{ path: 'chat', component: ChatComponent},
+{ path: 'allpost', component: AllpostComponent},
+{ path: 'addpost', component: AddpostComponent},
+{ path: 'search', component: SearchComponent}];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]

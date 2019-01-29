@@ -3,23 +3,31 @@ import { PostService } from '../post.service';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-feeds',
-  templateUrl: './feeds.component.html',
-  styleUrls: ['./feeds.component.css']
+	selector: 'app-feeds',
+	templateUrl: './feeds.component.html',
+	styleUrls: ['./feeds.component.css']
 })
 export class FeedsComponent implements OnInit {
-post = {content : ""};
-  constructor(public _postService: PostService, public router: Router) { }
+	friends = [];
+	constructor(public _postService: PostService, public router: Router) { }
 
-  ngOnInit() {
-  }
-  //adding new post
-  addUserPost(){
-  	console.log(this.post);
-  	this._postService.addPost(this.post).subscribe(res=>{
-  		console.log(res);
-  	},error=>{
-  		console.log(error);
-  	});
-  }
+	ngOnInit() {
+		this.getFriendsPost();
+	}
+	
+	getFriendsPost(){
+		var id = JSON.parse(localStorage.getItem('login'))._id;
+		this._postService.getFriendPost(id).subscribe((res : any)=>{
+			console.log("Response",res);
+			for(var i = 0; i < res.length; i++){
+				for(var j = 0; j < res[i].post.length; ++j){
+					this.friends.push(res[i].post[j]);
+				}
+			}
+			console.log("posts in service",this.friends);
+		},err=>{
+			console.log("Error",err)
+		});
+		
+	}
 }

@@ -17,13 +17,18 @@ app.use(bodyParser.json());
 
 app.post('/user/signUp', userController.signUp);
 app.post('/user/logIn', userController.logIn);
-app.get('/post/:id', userController.getUserById);
+// app.get('/post/:id', userController.getUserById);
+app.get('/user', userController.searchUser);
+app.post('/user/add-friend', userController.followUser);
+app.post('/user/unfollow-friend', userController.unFollowUser);
 
 app.post('/post', postController.addPost);
+app.post('/post', postController.addFriend);
 app.delete('/post', postController.deletePost);
 app.put('/post', postController.updatePost);
-app.get('/post/:id', postController.getPostById);
+// app.get('/post/:id', postController.getPostById);
+app.get('/post/:userId', postController.getAllPost);
+app.get('/post/add-friend-post/:requestedUser', postController.getFriendPost);
 app.get('/post', postController.getPosts);
-
 
 app.listen(8000);

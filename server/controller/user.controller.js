@@ -15,15 +15,15 @@ userController.logIn = function(req,res){
 	if(req.method == 'POST' && req.body.email && req.body.password){
 
 		userModel.findOne( { email : req.body.email , password : req.body.password } )
-			.select('-password')
-			.exec((err, user)=>{
-				if (err) {
-					return res.status(500).send( { errMsg : err });
-				}else if (user == null) {
-					return res.status(403).send( { errMsg : 'Unauthorises Access' });
-				}else{
-					return res.status(200).send( { user : user });
-				}
+		.select('-password')
+		.exec((err, user)=>{
+			if (err) {
+				return res.status(500).send( { errMsg : err });
+			}else if (user == null) {
+				return res.status(403).send( { errMsg : 'Unauthorises Access' });
+			}else{
+				return res.status(200).send( { user : user });
+			}
 		});
 	}else{
 		return res.status(400).send({errMsg : 'Bad Data'});
@@ -31,8 +31,44 @@ userController.logIn = function(req,res){
 };
 
 userController.getUserById = function( req,res){
-	getModel.find({_id: req.params.id},function(err,foundUser){
+	userModel.find({_id: req.params.id},function(err,foundUser){
 		res.send(err || foundUser);
+	})
+}
+userController.searchUser = function(req,res){
+	var key = req.query.key;
+	console.log("key from userController",key);
+	userModel.find({$or:[{lname:key},{fname:key}]}, function(err,searchedUser){
+		res.send(err || searchedUser);
+		console.log(searchedUser);
+	})
+}
+userController.followUser = function(req, res){
+	var currentUser = req.body.requestedUser;
+	var user = req.body.userTobeFollowed;
+	userModel.findOne({_id:currentUser},function(err,followUser){
+		console.log(followUser);
+		followUser.friend.push(user);
+		followUser.save();
+		res.send(followUser);
+	})
+}
+
+userController.unFollowUser = function(req,res){
+	var currentUser = req.body.requestedUser;
+	var user = req.body.userTobeUnFollowed;
+	userModel.findOne({_id:currentUser}, function(err,result){
+		console.log(result);
+		var index = result.friend.indexOf(user);
+		if (index == -1){
+			console.log("result not found")
+			res.status(401).send("Bad req");
+		}
+		else{
+			result.friend.splice(index,1);
+			result.save();
+			res.send(result);
+		}
 	})
 }
 module.exports = userController;

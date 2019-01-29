@@ -1,6 +1,7 @@
 <app-header></app-header>
-<div class="col-md-12" *ngFor="let post of friends, let i=index">
-	<div class="panel-group">
+
+<div class="col-md-12">
+	<div class="panel-group" *ngFor="let post of posts; let i=index">
 		<div class="panel panel-default">
 			<div class="panel-heading"></div>
 			<div class="panel-body">{{post.content}}</div>

@@ -6,6 +6,7 @@ var UserSchema = new Schema({
 	dob: Date,
 	email: String,
 	password: String,
+	friend: [{type: Schema.Types.ObjectId, ref: 'users'}],
 	post: [{type: Schema.Types.ObjectId, ref: 'post'}]
 });
 

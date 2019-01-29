@@ -13,6 +13,8 @@ import { MywallComponent } from './mywall/mywall.component';
 import { ChatComponent } from './chat/chat.component';
 import { ConnectionComponent } from './connection/connection.component';
 import { FeedsComponent } from './feeds/feeds.component';
+import { SearchComponent } from './search/search.component';
+import { AllpostComponent } from './allpost/allpost.component';
 
 
 @NgModule({
@@ -26,7 +28,9 @@ import { FeedsComponent } from './feeds/feeds.component';
     MywallComponent,
     ChatComponent,
     ConnectionComponent,
-    FeedsComponent
+    FeedsComponent,
+    SearchComponent,
+    AllpostComponent
   ],
   imports: [
     BrowserModule,
