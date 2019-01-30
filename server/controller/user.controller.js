@@ -30,11 +30,31 @@ userController.logIn = function(req,res){
 	}
 };
 
-userController.getUserById = function( req,res){
+userController.getUserById = function(req,res){
+	
 	userModel.find({_id: req.params.id},function(err,foundUser){
 		res.send(err || foundUser);
 	})
 }
+
+userController.getAllFriend = function(req,res){
+	var currentUser = req.params.requestedUser;
+	console.log("id",req.params.requestedUser);
+	userModel.findOne({_id: currentUser})
+	.exec((err,result)=>{
+		if(err){
+			res.status(500).send(err);
+		}
+		userModel.find({'_id': {$in: result.friend}})
+		.populate('user')
+		.exec((err,users)=>{
+			if(err){res.status(500).send(err);
+			}
+			console.log("users",users);
+			res.status(200).send(users);
+		})
+	})
+}	
 userController.searchUser = function(req,res){
 	var key = req.query.key;
 	console.log("key from userController",key);
@@ -71,4 +91,5 @@ userController.unFollowUser = function(req,res){
 		}
 	})
 }
+
 module.exports = userController;

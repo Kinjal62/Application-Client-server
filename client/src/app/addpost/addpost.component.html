@@ -1,13 +1,10 @@
 <app-header></app-header>
-<div class="col-md-12">
+<div class="col-sm-12">
 	<form #f="ngForm">
-		
 		<div class="form-group">
 			<label>Content</label>
 			<textarea [(ngModel)]="post.content" name="content" class="form-control" rows="5"></textarea>
 		</div>
-
-			<button type="submit" class="btn btn-success" (click)="addPostContent()">Submit</button>
-	
+		<button type="submit" class="btn btn-success" (click)="addPostContent()">Submit</button>
 	</form>
 </div><br>

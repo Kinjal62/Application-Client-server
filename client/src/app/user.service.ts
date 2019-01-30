@@ -34,4 +34,15 @@ export class UserService {
 		localStorage.removeItem('login');
 
 	}
+	
+	getUserById(id){
+		return this.http.get("http://localhost:8000/user/"+id);
+
+	}
+	getAllFriend(currentUser){
+		
+		return this.http.get("http://localhost:8000/user/get-friend/"+currentUser);
+	}
+	
+
 }

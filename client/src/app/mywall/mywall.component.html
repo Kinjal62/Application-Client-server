@@ -1,3 +1,21 @@
-<p>
-  mywall works!
-</p>
+<app-header></app-header>
+<div class="col-sm-5 col-sm-offset-4 center">
+  <form #f="ngForm" *ngFor="let user of users; let i=index">
+    <div class="form-group">
+      <label class="control-label">First_name:
+        <input [(ngModel)]="user.fname" class="form-control" type="text" name="fname" required="required"></label>
+      </div>
+    <div class="form-group">
+       <label class="control-label">Last_name:
+         <input [(ngModel)]="user.lname" class="form-control" type="text" name="lname" required="required"></label>
+    </div>
+    <div class="form-group">
+      <label class="control-label">DOB:
+        <input [(ngModel)]="user.dob" class="form-control" type="text" name="dob"></label>
+      </div>
+          <div class="form-group">
+            <label class="control-label">Email:
+              <input [(ngModel)]="user.email" class="form-control" type="email" name="email" required="required"></label>
+      </div>
+  </form>   
+</div>

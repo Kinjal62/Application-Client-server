@@ -1,1 +1,9 @@
 <app-header></app-header>
+<div class="col-sm-12 text">
+	<div class="panel-group" *ngFor="let user of friends, let i=index">
+		<div class="panel panel-default">
+			<div class="panel-heading"></div>
+			<div class="panel-body"> {{user.fname}} {{user.lname}} <button class="btn btn-info" type="submit" (click)="unFollowFriend(user._id)">UnFollow</button></div>	
+		</div>
+	</div>
+</div>

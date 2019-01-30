@@ -1,10 +1,10 @@
-<div class="col-md-12">
+<div class="col-sm-12">
 	<form>
 		<input [(ngModel)]="key" id="key" type="text" placeholder="Search.." name="key">
 		<button type="submit" (click)="searchUser()"><i class="fa fa-search"></i></button>
 	</form>
 </div>
-<div class="container col-md-6">
+<div class="container col-sm-6">
 	<table class="table" *ngIf="users">
 		<thead>
 			<th>First Name</th>
@@ -15,8 +15,8 @@
 			<tr *ngFor="let user of users; let i=index">
 				<td>{{user.fname}}</td>
 				<td>{{user.lname}}</td>
-				<td *ngIf="!user.isFriend"><button type="submit" (click)="followFriend(user._id)">Follow</button></td>
-				<td *ngIf="user.isFriend"><button type="submit" (click)="unFollowFriend(user._id)">UnFollow</button></td>
+				<td *ngIf="!user.isFriend"><button class="btn btn-info" type="submit" (click)="followFriend(user._id)">Follow</button></td>
+				<td *ngIf="user.isFriend"><button class="btn btn-info" type="submit" (click)="unFollowFriend(user._id)">UnFollow</button></td>
 			</tr>
 		</tbody>
 	</table>

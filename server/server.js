@@ -21,6 +21,8 @@ app.post('/user/logIn', userController.logIn);
 app.get('/user', userController.searchUser);
 app.post('/user/add-friend', userController.followUser);
 app.post('/user/unfollow-friend', userController.unFollowUser);
+app.get('/user/:id', userController.getUserById);
+app.get('/user/get-friend/:requestedUser',userController.getAllFriend);
 
 app.post('/post', postController.addPost);
 app.post('/post', postController.addFriend);
