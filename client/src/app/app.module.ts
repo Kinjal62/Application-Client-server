@@ -6,7 +6,6 @@ import { AppComponent } from './app.component';
 import { SignupComponent } from './signup/signup.component';
 import { LoginComponent } from './login/login.component';
 import { AddpostComponent } from './addpost/addpost.component';
-import { PersonaldetailComponent } from './personaldetail/personaldetail.component';
 import { HeaderComponent } from './header/header.component';
 import { HttpClientModule } from '@angular/common/http';
 import { MywallComponent } from './mywall/mywall.component';
@@ -15,7 +14,7 @@ import { ConnectionComponent } from './connection/connection.component';
 import { FeedsComponent } from './feeds/feeds.component';
 import { SearchComponent } from './search/search.component';
 import { AllpostComponent } from './allpost/allpost.component';
-
+import { ChatService } from './chat.service';
 
 @NgModule({
   declarations: [
@@ -23,7 +22,6 @@ import { AllpostComponent } from './allpost/allpost.component';
     SignupComponent,
     LoginComponent,
     AddpostComponent,
-    PersonaldetailComponent,
     HeaderComponent,
     MywallComponent,
     ChatComponent,
@@ -38,7 +36,7 @@ import { AllpostComponent } from './allpost/allpost.component';
     FormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [ChatService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

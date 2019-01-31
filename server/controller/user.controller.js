@@ -91,5 +91,4 @@ userController.unFollowUser = function(req,res){
 		}
 	})
 }
-
 module.exports = userController;

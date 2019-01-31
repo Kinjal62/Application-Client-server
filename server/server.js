@@ -8,12 +8,34 @@ var userController = require('./controller/user.controller');
 var postController = require('./controller/post.controller');
 app.use(cors());
 
+var http = require('http');
+var server = http.Server(app);
+
+var socketIO = require('socket.io');
+var io = socketIO(server);
+
+var port = process.env.PORT || 8000;
+
+io.on('connection', (socket) => {
+    console.log('user connected');
+     socket.on('new-message', (message) => {
+      console.log(message);
+      io.emit('new-message',message);
+    });
+});
+
+server.listen(port, () => {
+    console.log(`started on port: ${port}`);
+});
+
+
 mongoose.connect('mongodb://localhost:27017/socialmedia', {useNewUrlParser: true})
 .then(() => {console.log("connected")})
 .catch(err => {console.log(err)});
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+
 
 app.post('/user/signUp', userController.signUp);
 app.post('/user/logIn', userController.logIn);
@@ -24,6 +46,7 @@ app.post('/user/unfollow-friend', userController.unFollowUser);
 app.get('/user/:id', userController.getUserById);
 app.get('/user/get-friend/:requestedUser',userController.getAllFriend);
 
+
 app.post('/post', postController.addPost);
 app.post('/post', postController.addFriend);
 app.delete('/post', postController.deletePost);
@@ -33,4 +56,3 @@ app.get('/post/:userId', postController.getAllPost);
 app.get('/post/add-friend-post/:requestedUser', postController.getFriendPost);
 app.get('/post', postController.getPosts);
 
-app.listen(8000);

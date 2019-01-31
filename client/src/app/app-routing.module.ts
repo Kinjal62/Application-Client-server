@@ -20,8 +20,10 @@ const routes: Routes = [
 { path: 'allpost', component: AllpostComponent},
 { path: 'addpost', component: AddpostComponent},
 { path: 'search', component: SearchComponent}];
+
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
+
 export class AppRoutingModule { }
