@@ -15,6 +15,7 @@ import { FeedsComponent } from './feeds/feeds.component';
 import { SearchComponent } from './search/search.component';
 import { AllpostComponent } from './allpost/allpost.component';
 import { ChatService } from './chat.service';
+import { DetailComponent } from './detail/detail.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { ChatService } from './chat.service';
     ConnectionComponent,
     FeedsComponent,
     SearchComponent,
-    AllpostComponent
+    AllpostComponent,
+    DetailComponent
   ],
   imports: [
     BrowserModule,

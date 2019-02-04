@@ -31,5 +31,19 @@ export class PostService {
 		console.log("get friend post");
 		return this.http.get("http://localhost:8000/post/add-friend-post/"+currentUser);
 	}
-	
+
+	uploadFile(file: FileList, data){
+		console.log(file);
+		console.log(data);
+		let formdata = new FormData();
+		data['userId'] = JSON.parse(localStorage.getItem('login'))._id;
+		formdata.append("uploadFile",file[0]);
+		formdata.append("content",data.content);
+		formdata.append("datetime",data.datetime);
+		formdata.append("publish",data.publish);
+		formdata.append("fileName",data.fileName);
+		formdata.append("userId",data.userId);
+		return this.http.post("http://localhost:8000/post/upload-image", formdata);
+ } 
+
 }

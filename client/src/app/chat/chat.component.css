@@ -1,0 +1,30 @@
+.col-sm-4 li.list-group-item {
+    text-transform: capitalize;
+}
+.chat_content {
+    border: 2px solid #fff;
+    border-radius: 6px 6px 0px 0px;
+}
+.chat_content ul.list-group {
+    display: inline-block;
+    width: 100%;
+    height: 300px;
+    overflow-y: auto;
+    padding: 20px 20px 0px;
+    margin: 0px;
+    float: left;
+    transition: all 0.5s;
+}
+.chat_content .text-left {
+    font-size: 20px;
+    font-weight: 600;
+    background-color: #337ab7;
+    padding: 20px;
+    border-radius: 6px 6px 0px 0px;
+    color: #fff;
+    text-transform: capitalize;
+}
+.chat_inner{
+    display: inline-block;
+    width: 100%;
+}

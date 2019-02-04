@@ -8,9 +8,11 @@ import { HttpClient } from '@angular/common/http';
 export class ChatService {
 	private url = 'http://localhost:8000';
     private socket;    
+    
 
 	constructor(public http:HttpClient) { 
 	 	this.socket = io(this.url);
+      
 	}
 
 	public sendMessage(message) {
@@ -24,4 +26,8 @@ export class ChatService {
             });
         });
     }
+    getAllMessage(body){
+        return this.http.post("http://localhost:8000/message",body);
+    }
 }
+

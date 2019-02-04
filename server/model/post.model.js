@@ -4,7 +4,8 @@ var PostSchema = new Schema({
 	author: [{type: Schema.Types.ObjectId, ref: 'users'}],
 	content: String,
 	datetime: Date,
-	publish: Boolean
+	publish: Boolean,
+	fileName: String
 });
 
 module.exports = mongoose.model('post', PostSchema);

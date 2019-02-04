@@ -5,6 +5,8 @@
 			<label>Content</label>
 			<textarea [(ngModel)]="post.content" name="content" class="form-control" rows="5"></textarea>
 		</div>
-		<button type="submit" class="btn btn-success" (click)="addPostContent()">Submit</button>
+		<input type="file" name="uploadFile" [(ngModel)]="post.fileName" (change)="changeFile($event)" #fileInput>
+
+		<button type="submit" class="btn btn-success" (click)="addPostContent(post); f.resetForm()">Submit</button>
 	</form>
 </div><br>

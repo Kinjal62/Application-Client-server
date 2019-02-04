@@ -63,7 +63,7 @@ postController.getAllPost = function(req,res){
 	userModel
 	.findOne({_id: userId})
 	.populate('post')
-	.select('post')
+	.select('-friend')
 	.exec((err,result)=>{
 		if(err) { res.status(500).send(err); }
 		res.status(200).send(result);
@@ -79,7 +79,6 @@ postController.getFriendPost = function(req,res){
 		}
 		userModel.find({'_id': {$in: result.friend}})
 		.populate('post')
-		.select('post')
 		.exec((err,posts)=>{
 			if(err){res.status(500).send(err);
 			}
@@ -88,4 +87,52 @@ postController.getFriendPost = function(req,res){
 		})
 	})
 }	
+postController.uploadFile = function(req,res){
+	console.log(req.body);
+	var sampleFile = req.files.uploadFile;
+	console.log("Sample File",sampleFile);
+	sampleFile.mv('./uploads/'+sampleFile.name,function(err,result){
+		if(err){
+			res.status(500).send(err);
+		}
+		else{
+			var userId = req.body.userId;
+			console.log("userId==========>>>>",userId);
+			var fileName = req.body.fileName;
+			console.log("fileName==========>>>",fileName);
+			var fileNameArr = fileName.split("\\");
+			console.log("fileName======>>>>>>",fileNameArr);
+			fileName  = fileNameArr[2];
+			console.log("fileName", fileName);
+			var post_data = {
+				content : req.body.content,
+				datetime : req.body.datetime,
+				publish : req.body.publish,
+				fileName : "/uploads/"+fileName
+			};
+
+			var postData = new postModel(post_data);
+			console.log("postData",postData);
+			postData.save(function(err,savedpost){
+				console.log(err,savedpost);
+				if (err) { 
+					res.status(500).send(err); 
+				}else{
+					userModel
+					.findOne({_id: userId})
+					.exec((err, user)=>{
+						console.log(user);
+						if (err) {
+							res.status(500).send(err);
+						}else{
+							user.post.push(savedpost._id);
+							user.save();
+							res.status(200).send(savedpost);
+						}
+					});
+				}
+			});
+		}
+	});
+}			
 module.exports = postController;

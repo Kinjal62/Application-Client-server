@@ -6,7 +6,10 @@ var router = express.Router();
 var cors = require('cors');
 var userController = require('./controller/user.controller');
 var postController = require('./controller/post.controller');
+var fileUpload = require('express-fileupload');
+var messageController = require('./controller/message.controller');
 app.use(cors());
+app.use(fileUpload());
 
 var http = require('http');
 var server = http.Server(app);
@@ -16,19 +19,9 @@ var io = socketIO(server);
 
 var port = process.env.PORT || 8000;
 
-io.on('connection', (socket) => {
-    console.log('user connected');
-     socket.on('new-message', (message) => {
-      console.log(message);
-      io.emit('new-message',message);
-    });
-});
-
-server.listen(port, () => {
-    console.log(`started on port: ${port}`);
-});
 
 
+var messageModel = require('./model/message.model');
 mongoose.connect('mongodb://localhost:27017/socialmedia', {useNewUrlParser: true})
 .then(() => {console.log("connected")})
 .catch(err => {console.log(err)});
@@ -56,3 +49,19 @@ app.get('/post/:userId', postController.getAllPost);
 app.get('/post/add-friend-post/:requestedUser', postController.getFriendPost);
 app.get('/post', postController.getPosts);
 
+app.post('/post/upload-image',postController.uploadFile);
+app.post('/message', messageController.getAllMessage);
+
+io.on('connection', (socket) => {
+	console.log('user connected');
+	socket.on('new-message', (message) => {
+		console.log(message);
+		var msg = new messageModel(message);
+		msg.save(function(){
+			io.emit('new-message',message);
+		});
+	});
+});
+server.listen(port, () => {
+	console.log(`started on port: ${port}`);
+});

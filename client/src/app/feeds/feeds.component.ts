@@ -9,6 +9,8 @@ import { Router } from '@angular/router';
 })
 export class FeedsComponent implements OnInit {
 	friends = [];
+	user : any;
+	friend = [];
 	constructor(public _postService: PostService, public router: Router) { }
 
 	ngOnInit() {
@@ -20,9 +22,10 @@ export class FeedsComponent implements OnInit {
 		this._postService.getFriendPost(id).subscribe((res : any)=>{
 			console.log("Response",res);
 			for(var i = 0; i < res.length; i++){
-				for(var j = 0; j < res[i].post.length; ++j){
-					this.friends.push(res[i].post[j]);
-				}
+				this.friend.push(res[i]);
+				//for(var j = 0; j < res[i].post.length; ++j){
+				//	this.friends.push(res[i].post[j]);
+			//	}
 			}
 			console.log("posts in service",this.friends);
 		},err=>{
