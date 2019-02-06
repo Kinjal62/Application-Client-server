@@ -1,0 +1,33 @@
+<app-header></app-header>
+<div class="row">.
+	<div class="col-sm-4">
+		<ul class="list-group">
+			<div *ngFor="let user of friends, let i=index">
+				<li class="list-group-item" (click)="openModel(user)">{{user.fname}} {{user.lname}}</li>
+			</div>
+		</ul>
+	</div>
+
+	<div class="col-sm-8">
+		<div class="chat_content" [hidden]="!user">
+			<div class="text-left" *ngIf="user">{{user.fname}} {{user.lname}}</div>
+
+
+			<ul id="chat" class="list-group" *ngIf="messages.length">
+				<div class="chat_inner">
+					<li class="list-group-item" *ngFor="let msg of messages;" [ngStyle]="{'text-align': msg.srcId==currentUser._id?'right':'left', 'float': msg.srcId==currentUser._id?'right':'left'}" style="width: 60%; margin: 10px 0;">
+						<div>{{msg.msg}}</div>
+					</li>
+				</div>
+			</ul>
+			<div class="input-group" style="width: 100%">
+				<form #f="ngForm">
+				<input type="text" class="form-control" name="message" [(ngModel)]="message" style="width: calc(100% - 50px); float: left;" required>
+				<div class="input-group-append" style="width: 50px; float: left;">
+					<button type="submit" style="width: 100%;padding: 7px;" class="btn btn-sm btn-success" type="button" (click)="sendMessage(user._id); f.resetForm()">send</button>
+				</div>
+			</form>
+			</div>
+		</div>
+	</div>
+</div>

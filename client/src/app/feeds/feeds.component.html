@@ -1,0 +1,12 @@
+<app-header></app-header>
+<div class="col-sm-12" style="border:1px solid; margin-top: 10px;" *ngFor="let post of friendsPost, let i=index">
+	<div class="panel-group">
+		<div class="panel panel-default">
+			<div class="panel-heading">{{post.author}}</div>
+				<div class="panel-body">{{post.content}} {{post.datetime}} {{post.publish}}</div>
+				<div *ngIf="post.fileName">
+					<img src="http://localhost/social-media/server{{post.fileName}}">
+				</div>
+		</div>
+	</div>
+</div>

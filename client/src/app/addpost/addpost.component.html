@@ -1,0 +1,12 @@
+<app-header></app-header>
+<div class="col-sm-12" style="border:1px solid; margin-top: 20px; padding: 15px;">
+	<form #f="ngForm">
+		<div class="form-group">
+			<label>Content</label>
+			<textarea [(ngModel)]="post.content" name="content" class="form-control" rows="5"></textarea>
+		</div>
+		<input type="file" name="uploadFile" [(ngModel)]="post.fileName" (change)="changeFile($event)" #fileInput>
+
+		<button type="submit" class="btn btn-primary" (click)="addPostContent(post); f.resetForm()">Submit</button>
+	</form>
+</div><br>

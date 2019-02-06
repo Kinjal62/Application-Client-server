@@ -1,0 +1,43 @@
+<app-header></app-header>
+<div class="col-sm-5 col-sm-offset-4 center">
+  <form style="border:1px solid; margin-top: 60px; padding: 15px;" #f="ngForm" *ngFor="let user of users; let i=index">
+    <div>
+      <img height="160" width="460" src="http://localhost/social-media/server{{user.cover}}" onerror="this.src='assets/p2.jpeg'" class="img-rounded">
+
+      <label for="cover">Cover</label>
+      <input type="file" id="cover" name="fileUpload" (change)="changeFile($event,'cover')" hidden="true" style="display:none; margin-top: 150px;">
+    </div>
+
+    <div>
+      <img height="210" width="150" src="http://localhost/social-media/server{{user.fileName}}" onerror="this.src='assets/p1.jpeg'" style="margin-left:200px; padding-top:20px;" class="img-rounded">
+      <label for="profile">Profile</label>
+      <input type="file" id="profile" name="fileUpload" (change)="changeFile($event,'profile')" hidden="true" style="display:none;">
+    </div>
+
+
+    <div class="form-group">  
+      <label class="control-label">First_name:
+        <input [(ngModel)]="user.fname" class="form-control" type="text" name="fname" required="required">
+      </label>
+    </div>
+
+    <div class="form-group">
+      <label class="control-label">Last_name:
+        <input [(ngModel)]="user.lname" class="form-control" type="text" name="lname" required="required">
+     </label>
+    </div>
+
+    <div class="form-group">
+      <label class="control-label">DOB:
+        <input [(ngModel)]="user.dob" class="form-control" type="text" name="dob">
+      </label>
+    </div>
+
+    <div class="form-group">
+      <label class="control-label">Email:
+        <input [(ngModel)]="user.email" class="form-control" type="email" name="email" required="required">
+      </label>
+    </div>
+    
+  </form>   
+</div>
