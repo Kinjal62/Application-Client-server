@@ -1,24 +1,24 @@
-<div class="col-sm-5 col-sm-offset-4 center" style="border:1px solid; margin-top: 60px; padding: 15px;">
-	<div class="header hedder-logged-out width-full pt-5 pb-4" role="banner">
-		<div class="container clearfix width-full text-center">
-			<img src="assets/images/headerlogo.jpg" alt="logo">
-		</div>
+<div class="header header-logged-out width-full" role="banner">
+	<div class="container clearfix width-full text-center">
+		<img src="assets/images/login.png" alt="logo">
 	</div>
+</div>
+
+<div class="col-sm-5 col-sm-offset-4 center" style="border:1px solid; margin-top: 60px; padding: 15px;">
 	<form #f="ngForm">
 		<div class="form-group">
-			<label class="control-label">Email:
-				<input [(ngModel)]="user.email" class="form-control" type="email" name="email" required="required">
-			</label>
+			<label for="login_filed">Email:	</label>
+			<input [(ngModel)]="user.email" id="login_field" class="form-control" type="email" name="email" required="required" tabindex="1" autofocus="autofocus">
+		</div>
+		<div class="form-group">
+			<label for="password">Password:</label>
+			<input [(ngModel)]="user.password" class="form-control input-block" type="password" name="password" required="required" id="password" tabindex="2">
 		</div>
 
-		<div class="form-group">
-			<label class="control-label" for="psw">Password:
-				<input [(ngModel)]="user.password" class="form-control" type="password" name="password" required="required">
-			</label>
-		</div>
 		<div class="btn-toolbar text-center">
-			<button type="submit" class="btn btn-primary btn-md" (click)="login()">Submit</button>
-			<button type="button" class="btn btn-primary btn-md" routerLink="/signup">SignUp</button>
+			<input type="submit" class="btn btn-primary btn-md" (click)="login()" value="Sign in"tabindex="3">
+			<input type="button" class="btn btn-primary btn-md" value="Sign up" routerLink="/signup">
 		</div>
 	</form>
 </div>
+

@@ -1,5 +1,5 @@
 <app-header></app-header>
-<div class="row">.
+<div class="row">
 	<div class="col-sm-4">
 		<ul class="list-group">
 			<div *ngFor="let user of friends, let i=index">
@@ -22,7 +22,7 @@
 			</ul>
 			<div class="input-group" style="width: 100%">
 				<form #f="ngForm">
-				<input type="text" class="form-control" name="message" [(ngModel)]="message" style="width: calc(100% - 50px); float: left;" required>
+				<input type="text" class="form-control" name="message" [(ngModel)]="message" style="width: calc(100% - 50px); float: left;" required="required" autofocus="autofocus">
 				<div class="input-group-append" style="width: 50px; float: left;">
 					<button type="submit" style="width: 100%;padding: 7px;" class="btn btn-sm btn-success" type="button" (click)="sendMessage(user._id); f.resetForm()">send</button>
 				</div>
