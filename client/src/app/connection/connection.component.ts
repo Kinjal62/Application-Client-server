@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 import { UserService } from '../user.service';
 import { Router } from '@angular/router';
-
+declare var $:any;
+import * as _ from 'lodash';
 
 @Component({
 	selector: 'app-connection',
@@ -11,7 +12,7 @@ import { Router } from '@angular/router';
 export class ConnectionComponent implements OnInit {
 	friends = [];
 	_id: any;
-	
+	draggable: string = "";
 	constructor(public _userService: UserService, public router: Router) { }
 
 	ngOnInit() {
@@ -29,19 +30,27 @@ export class ConnectionComponent implements OnInit {
 		},err=>{
 			console.log("Error",err)
 		});
-		
 	}
-	
-
 	unFollowFriend(_id){
 		console.log("response",_id);
 		this._userService.unFollowUser(_id).subscribe(res=>{
 			console.log("response",res);
-			this._id = res;
+			//this._id = res;
+			this.friends.splice(_.findIndex(this.friends, {_id: _id}),1)
 			localStorage.setItem('login',JSON.stringify(res));
 		},err=>{
 			console.log("Error",err);
 		})
 		console.log("data",_id);
+	}
+	@HostListener('drop',['$event']) dragOver(event){
+		event.preventDefault();
+	}
+	
+	@HostListener('drop', ['$event']) onDrop(event){
+		event.preventDefault();
+		event.stopPropagation();
+		var id = $(this)[0].friends[0]._id;
+		this.unFollowFriend(id);
 	}
 }

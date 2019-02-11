@@ -1,0 +1,8 @@
+.navbar{
+	border-bottom: 1px solid #29487d;
+	background-color: #4267b2;
+}
+
+.navbar-default .navbar-nav li a{
+	color: #fff;
+}

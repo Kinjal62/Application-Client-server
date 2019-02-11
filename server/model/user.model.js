@@ -1,5 +1,4 @@
 var mongoose = require('mongoose');
-
 var Schema	= mongoose.Schema;
 var UserSchema = new Schema({
 	fname: String,
@@ -8,9 +7,9 @@ var UserSchema = new Schema({
 	email: String,
 	password: String,
 	friend: [{type: Schema.Types.ObjectId, ref: 'users'}],
-	post: [{type: Schema.Types.ObjectId, ref: 'post'}],
 	fileName: String,
 	cover: String
+
 });
 
 module.exports = mongoose.model('users', UserSchema);

@@ -1,12 +1,21 @@
 <app-header></app-header>
-<div class="col-sm-12">
-	<div class="panel-group" *ngFor="let post of posts; let i=index">
+<div class="col-sm-12" *ngFor="let post of posts; let i=index">
+	<div class="panel-group" >
 		<div class="panel panel-default">
-			<div class="panel-heading">{{post.author}}</div>
+			<div class="panel-heading"><h1>{{post.author}}</h1></div>
 			<div class="panel-body">{{post.content}} {{post.datetime}} {{post.publish}}</div>
-				<div *ngIf="post.fileName">
-					<img class="img-rounded" src="http://localhost/social-media/server{{post.fileName}}">
+			<div *ngIf="post.fileName">
+				<img class="img-rounded" src="http://localhost/social-media/server{{post.fileName}}">
+			</div>
+			<div class="row">
+				<div class="col-md-2">
+					<i class="fa fa-thumbs-o-up" style="font-size:20px">Like</i>
 				</div>
+				<div class="col-md-2">
+					<i class="fa fa-comments-o" style="font-size:20px">Comment</i>
+				</div>
+			</div>
 		</div>
 	</div>
 </div>
+

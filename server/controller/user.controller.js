@@ -49,7 +49,8 @@ userController.getAllFriend = function(req,res){
 		userModel.find({'_id': {$in: result.friend}})
 		.populate('user')
 		.exec((err,users)=>{
-			if(err){res.status(500).send(err);
+			if(err){
+			return res.status(500).send(err);
 			}
 			console.log("users",users);
 			res.status(200).send(users);
@@ -92,6 +93,7 @@ userController.unFollowUser = function(req,res){
 		}
 	})
 }
+
 userController.uploadFile = function(req,res){
 	console.log("uploadFile=========>",req.body);
 	var sampleFile = req.files.uploadFile;
@@ -124,4 +126,5 @@ userController.uploadFile = function(req,res){
 		}
 	});
 }	
+
 module.exports = userController;

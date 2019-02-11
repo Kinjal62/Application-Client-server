@@ -1,0 +1,32 @@
+.img-rounded{
+	height: 50px;
+	width: 50px;
+	border-radius: 100%;
+	display: block;
+	/*margin: 0px auto;*/
+	margin-top: -60px;
+	margin-bottom: 50px;
+	margin-left: 5px;
+	position: absolute;
+	padding: 2px;
+	/*	background-color: rgba(255,255,255,0.75);*/
+	background-color: #fff;
+}
+.date_time{
+	margin-top: 25px;
+	margin-left:45px;
+	text-align: left;
+}
+.panel-footer{
+	padding-top: 5px;
+	border: 1px solid;
+}
+.col-md-4{
+	font-family: inherit;
+	font-size: 20px;
+}
+.input-group{
+	width: auto;
+	border: 1px ridge grey;
+	border-radius: 5px;
+}

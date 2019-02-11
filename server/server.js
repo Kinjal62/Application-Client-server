@@ -8,11 +8,13 @@ var userController = require('./controller/user.controller');
 var postController = require('./controller/post.controller');
 var fileUpload = require('express-fileupload');
 var messageController = require('./controller/message.controller');
+var commentController = require('./controller/comment.controller');
 app.use(cors());
 app.use(fileUpload());
 
 var http = require('http');
 var server = http.Server(app);
+
 var socketIO = require('socket.io');
 var io = socketIO(server);
 var port = process.env.PORT || 8000;
@@ -33,6 +35,7 @@ app.post('/user/add-friend', userController.followUser);
 app.post('/user/unfollow-friend', userController.unFollowUser);
 app.get('/user/:id', userController.getUserById);
 app.get('/user/get-friend/:requestedUser',userController.getAllFriend);
+
 app.post('/user/profile-photo',userController.uploadFile);
 
 app.post('/post', postController.addPost);
@@ -40,11 +43,15 @@ app.post('/post', postController.addFriend);
 app.delete('/post', postController.deletePost);
 app.put('/post', postController.updatePost);
 // app.get('/post/:id', postController.getPostById);
-app.get('/post/:userId', postController.getAllPost);
+app.get('/post/user/:userId', postController.getAllPost);
 app.get('/post/add-friend-post/:requestedUser', postController.getFriendPost);
 app.get('/post', postController.getPosts);
+
 app.post('/post/upload-image',postController.uploadFile);
 app.post('/message', messageController.getAllMessage);
+app.post('/post/like',postController.like);
+app.post('/post/add-comment',commentController.addComments);
+app.get('/post/:userId',commentController.getComments);
 
 io.on('connection', (socket) => {
 	console.log('user connected');

@@ -17,11 +17,13 @@ export class UserService {
 		return this.http.post("http://localhost:8000/user/logIn", body);
 	}
 	//for serch the friend
+
 	searchedUsers(key){
 		var query = "?key="+key
 		return this.http.get("http://localhost:8000/user"+query);
 	}
 	//follow friend
+
 	followUser(_id){
 		console.log("follow friend",_id);
 		var body = {requestedUser:JSON.parse(localStorage.getItem('login'))._id, userTobeFollowed:_id};
@@ -33,9 +35,9 @@ export class UserService {
 		var body = {requestedUser:JSON.parse(localStorage.getItem('login'))._id, userTobeUnFollowed:_id};
 		return this.http.post("http://localhost:8000/user/unfollow-friend", body);
 	}
-
 	deleteToken() {
 		localStorage.removeItem('login');
+
 	}
 	
 	getUserById(id){
@@ -46,6 +48,7 @@ export class UserService {
 		
 		return this.http.get("http://localhost:8000/user/get-friend/"+currentUser);
 	}
+
 	//for upload profile
 	uploadFile(file: FileList, data, changeType){
 		console.log(data);
@@ -56,5 +59,4 @@ export class UserService {
 		formData.append("uploadFile",file[0]);
 		return this.http.post("http://localhost:8000/user/profile-photo", formData);
  } 
-
 }

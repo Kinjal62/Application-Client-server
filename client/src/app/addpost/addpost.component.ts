@@ -9,7 +9,9 @@ import { Observable } from 'rxjs';
   styleUrls: ['./addpost.component.css']
 })
 export class AddpostComponent implements OnInit {
-post = {content : "",datetime: new Date(), publish: "true",fileName: ""};
+
+post = {content : "",datetime: new Date(), publish: "true", fileName: ""};
+
 posts = [];
 files : FileList;
   constructor(public _postService: PostService, public router: Router) { }

@@ -2,11 +2,34 @@
 <div class="col-sm-12" style="border:1px solid; margin-top: 10px;" *ngFor="let post of friendsPost, let i=index">
 	<div class="panel-group">
 		<div class="panel panel-default">
-			<div class="panel-heading">{{post.author}}</div>
-				<div class="panel-body">{{post.content}} {{post.datetime}} {{post.publish}}</div>
-				<div *ngIf="post.fileName">
-					<img src="http://localhost/social-media/server{{post.fileName}}">
+			<div class="panel-heading"><h3>{{post.author}}</h3>
+				<div class="date_time">
+					<h5>{{post.datetime}} {{post.publish}}</h5>
 				</div>
+			</div>
+			<div *ngIf="post.fileName">
+				<img class="img-rounded" src="http://localhost/social-media/server{{post.fileName}}">
+			</div>
+			<div class="panel-body">
+				<h4>{{post.content}}</h4>
+			</div>
+			<div class="panel-footer row">
+				<div class="col-md-4">
+					<i class="fa fa-thumbs-o-up" style="color: rgb(53, 120, 229);" (click)="likePost(post._id)">Like</i><p>{{post.like.length}}</p>
+				</div>
+				<div class="col-md-4">
+					<i class="fa fa-comments-o">Comment</i>
+				</div>
+				<div class="col-md-4">
+					<i class="fa fa-share">Share</i>
+				</div>
+				<div class="input-group">
+					<form #f="ngForm">
+						<input type="text" class="input-control" name="comment" [(ngModel)]="post.comment" required="required" autofocus="autofocus">
+						<button type="submit"  class="btn btn-sm btn-success" type="button" (click)="addComment(post._id,comment); f.resetForm()">send</button>	
+					</form>
+				</div>
+			</div>
 		</div>
 	</div>
 </div>

@@ -1,11 +1,32 @@
 <app-header></app-header>
-<div class="col-md-10 col-md-offset-1" style="padding-bottom: 30px;">
+<div class="col-md-11 col-md-offset-0" style="padding-bottom: 30px;">
   <form #f="ngForm" *ngFor="let user of users; let i=index">
     <div class="cover_image">
       <img src="http://localhost/social-media/server{{user.cover}}" onerror="this.src='assets/p2.jpeg'">
+      
+      <div class="update_cover">
+        <div class="form-group">
+          <label for="cover"><i class="fa fa-camera" aria-hidden="true"></i></label>
+          <input type="file" id="cover" name="fileUpload" (change)="changeFile($event,'cover')" hidden="true" style="display:none; margin-top: 150px;">
+        </div>
+      </div>
+
+      <div class="user_name">
+        <h2>{{user.fname}} {{user.lname}}</h2>
+      </div>
+      <div class="update_profile">
+        <input type="button" value="Edit Profile">
+      </div>
     </div>
+
     <div class="profile_picture">
-      <img src="http://localhost/social-media/server{{user.fileName}}" onerror="this.src='assets/p1.jpeg'">
+      <img src="http://localhost/social-media/server{{user.fileName}}" class="img-rounded" onerror="this.src='assets/p1.jpeg'"> 
+      <div class="update_pic">
+        <div class="form-group">
+          <label for="profile"><i class="fa fa-camera" aria-hidden="true"></i></label>
+          <input type="file" id="profile" name="fileUpload" (change)="changeFile($event,'profile')" hidden="true" style="display:none;">
+        </div>
+      </div>
     </div>
 
     <div class="row">
@@ -16,6 +37,7 @@
           </label>
         </div>
       </div>
+
       <div class="col-md-6">
         <div class="form-group">
           <label class="control-label">Last Name:
@@ -23,6 +45,7 @@
           </label>
         </div>
       </div>
+
       <div class="col-md-6">
         <div class="form-group">
           <label class="control-label">DOB:
@@ -30,29 +53,13 @@
           </label>
         </div>
       </div>
+
       <div class="col-md-6">
         <div class="form-group">
           <label class="control-label">Email:
             <input [(ngModel)]="user.email" class="form-control" type="email" name="email" required="required">
           </label>
         </div>
-      </div>
-      <div class="col-md-6">
-        <div class="form-group">
-          <label>Change Cover</label>
-          <label for="cover"><i class="fa fa-camera" aria-hidden="true"></i></label>
-          <input type="file" id="cover" name="fileUpload" (change)="changeFile($event,'cover')" hidden="true" style="display:none; margin-top: 150px;">
-        </div>
-      </div>
-      <div class="col-md-6">
-        <div class="form-group">
-          <label>Change Profile</label>
-          <label for="profile"><i class="fa fa-camera" aria-hidden="true"></i></label>
-          <input type="file" id="profile" name="fileUpload" (change)="changeFile($event,'profile')" hidden="true" style="display:none;">
-        </div>
-      </div>
-      <div class="col-md-12 text-center">
-        <button type="button" class="btn btn-success btn-lg">Save</button>
       </div>
     </div>
   </form>   

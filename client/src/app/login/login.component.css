@@ -1,0 +1,20 @@
+.clearfix{
+background-color: #365899;
+min-width: 1500px;
+}
+.col-sm-7, table, tr, td{
+	padding: 0 0 0 14px;
+}
+.table {
+    display: table;
+    border-collapse: separate;
+    border-spacing: 2px;
+    border-color: grey;
+}
+td, th {
+    display: table-cell;
+    vertical-align: inherit;
+}
+td{
+	font-family: inherit;
+}

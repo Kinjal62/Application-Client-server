@@ -8,6 +8,7 @@ import { Router } from '@angular/router';
 	styleUrls: ['./mywall.component.css']
 })
 export class MywallComponent implements OnInit {
+
 	user = {fname: "", lname: "", dob: "", email:"", fileName: "", cover: "" };
 	users : [];
 	files : FileList;
@@ -28,6 +29,7 @@ export class MywallComponent implements OnInit {
 			console.log(error);
 		});
 	}
+
 	//upload profile
 	changeFile(e, changeType){
 		console.log(e.target.files);

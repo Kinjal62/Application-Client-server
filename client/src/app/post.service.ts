@@ -10,9 +10,8 @@ export class PostService {
 	
 	constructor(public http:HttpClient) { 
 		this.post = <Subject<any>>new Subject();
-	 
+		
 	}
-	
 	getAllPostSimple(){
 		return this.http.get("http://localhost:8000/post"); 
 	}
@@ -23,8 +22,8 @@ export class PostService {
 		return this.http.post("http://localhost:8000/post", body)
 	}
 	
-	getAllPost(){
-		return this.http.get("http://localhost:8000/post/" + JSON.parse(localStorage.getItem('login'))._id);
+	getAllPost(userId){
+		return this.http.get("http://localhost:8000/post/user/"+userId);
 	}
 
 	getFriendPost(currentUser){
@@ -44,6 +43,36 @@ export class PostService {
 		formdata.append("fileName",data.fileName);
 		formdata.append("userId",data.userId);
 		return this.http.post("http://localhost:8000/post/upload-image", formdata);
- } 
-
+	} 
+	like(id,postid){
+		console.log(id);
+		console.log(postid)
+		var body = {
+			userId: id,
+			postId: postid
+		}
+		return this.http.post("http://localhost:8000/post/like",body);
+	}
+	addComments(id,postid,comment) {
+		console.log("Id=======>",id);
+		console.log("postid=====>",postid);
+		console.log("comment=======>",comment);
+		var body = {
+			userId : id,
+			postId : postid,
+			comment : comment
+		}
+		return this.http.post("http://localhost:8000/post/add-comment",body);
+	}
+	getComments(id,postid,comment){
+		console.log("Id===>",id);
+		console.log("postId=========>",postid);
+		console.log("comment======>",comment);
+		var body ={
+			userId : id,
+			postId : postid,
+			comment : comment
+		}
+		return this.http.post("http://localhost:8000/post/get-comment",body);
+	}	
 }
