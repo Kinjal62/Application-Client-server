@@ -6,3 +6,8 @@
 .navbar-default .navbar-nav li a{
 	color: #fff;
 }
+.img-responsive{
+	height: 35px;
+	width: 35px;
+	margin-top: -8px;
+}

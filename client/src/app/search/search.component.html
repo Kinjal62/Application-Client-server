@@ -1,9 +1,11 @@
 <app-header></app-header>
 <div class="col-sm-12" style="margin-top: 30px">
+	<div class="serach_container">
 	<form>
 		<input [(ngModel)]="key" id="key" type="text" placeholder="Search.." name="key">
-		<button type="submit" (click)="searchUser()"><i class="fa fa-search"></i></button>
+		<button type="submit" class="serch_btn" (click)="searchUser()"><i class="fa fa-search"></i></button>
 	</form>
+</div>
 </div>
 <div class="container col-sm-6">
 	<table class="table" *ngIf="users">

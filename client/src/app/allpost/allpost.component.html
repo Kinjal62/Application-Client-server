@@ -1,21 +1,50 @@
 <app-header></app-header>
-<div class="col-sm-12" *ngFor="let post of posts; let i=index">
-	<div class="panel-group" >
+<div class="col-sm-6 col-sm-offset-3" *ngFor="let post of posts; let i=index">
+	<div class="panel-group">
 		<div class="panel panel-default">
-			<div class="panel-heading"><h1>{{post.author}}</h1></div>
-			<div class="panel-body">{{post.content}} {{post.datetime}} {{post.publish}}</div>
-			<div *ngIf="post.fileName">
-				<img class="img-rounded" src="http://localhost/social-media/server{{post.fileName}}">
-			</div>
-			<div class="row">
-				<div class="col-md-2">
-					<i class="fa fa-thumbs-o-up" style="font-size:20px">Like</i>
+			<div class="panel-heading">
+				<div class="profile_section">
+					<div *ngIf="post.fileName" class="profile_image">
+						<img src="http://localhost/social-media/server{{post.fileName}}" class="img-rounded"></div>
+					</div>
+					<h4 class="name">Tanvi Dave</h4>
+					<div class="date_time">
+						<h5>{{post.datetime}} {{post.publish}}</h5>
+					</div>
 				</div>
-				<div class="col-md-2">
-					<i class="fa fa-comments-o" style="font-size:20px">Comment</i>
+				
+				<div class="panel-body">
+					{{post.content}}
+					<div *ngIf="post.fileName">
+						<img src="http://localhost/social-media/server{{post.fileName}}">
+					</div>
+				</div>
+
+				<div class="panel-footer">
+					<div class="col-md-4">
+						<i class="far fa-thumbs-up" (click)="likePost(post._id)"></i>
+						<span>{{post.like.length}} Like</span>
+					</div>
+					<div class="col-md-4">
+						<i class="far fa-comment-alt"></i>
+						<span>Comment</span>
+					</div>
+					<div class="col-md-4">
+						<i class="fas fa-share"></i>
+						<span>Share</span>
+					</div>
+				</div>
+				<div class="comment_section">
+					<div *ngIf="post.fileName" class="comment_profile">
+						<img class="img-responsive" src="http://localhost/social-media/server{{post.fileName}}">
+					</div>
+					<form #f="ngForm" class="comment_textbox">
+						<div class="form-group">
+							<input type="text" name="comment" class="form-control" [(ngModel)]="post.comment" required="required" placeholder="Write a Comment..." autofocus="autofocus" (keyup.enter)="addComment(post._id,comment); f.resetForm()">
+						</div>
+					</form>
 				</div>
 			</div>
 		</div>
 	</div>
-</div>
 

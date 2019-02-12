@@ -3,16 +3,19 @@
 	<div class="col-sm-4">
 		<ul class="list-group">
 			<div *ngFor="let user of friends, let i=index">
-				<li class="list-group-item" (click)="openModel(user)">
-				<img src="http://localhost/social-media/server{{user.fileName}}">{{user.fname}} {{user.lname}}</li>
+				<li class="list-group-item" (click)="openModel(user)">	
+					<img src="http://localhost/social-media/server{{user.fileName}}" class="img-rounded">
+					<h4 class="text_left">{{user.fname}} {{user.lname}}</h4>
+				</li>
 			</div>
 		</ul>
 	</div>
 
 	<div class="col-sm-8">
 		<div class="chat_content" [hidden]="!user">
-			<div class="text-left" *ngIf="user"><img src="http://localhost/social-media/server{{user.fileName}}" height="70px" width="90px">{{user.fname}} {{user.lname}}</div>
-
+			<div class="text-left" *ngIf="user"><img src="http://localhost/social-media/server{{user.fileName}}" class="img-rounded">
+				<h4 class="text_left">{{user.fname}} {{user.lname}}</h4>
+			</div>
 
 			<ul id="chat" class="list-group" *ngIf="messages.length">
 				<div class="chat_inner">

@@ -31,15 +31,27 @@ commentController.addComments = function(req,res){
 		}
 	});
 }
+
 commentController.getComments = function(req,res){
-	var userId = req.params.userId;
-	userModel
-	.findOne({_id: userId})
-	.populate('post')
-	.exec((err,result)=>{
-		if(err) { res.status(500).send(err); }
+
+	console.log("request",req);
+	var userId = req.params.id;
+	console.log("user ID ===============>" , userId);
+
+	var postId = req.params.postId;
+	console.log("postId",postId);
+	var comment = req.body._id;
+	console.log("comment",comment);
+	postModel
+	.findOne({ _id: postId })
+	.populate('comment')
+	.exec((err, result)=>{
+		if (err) { res.status(500).send(err); }
+
+		result.comment.push(userId);
+		result.save();
 		res.status(200).send(result);
 	})
-}
 
-module.exports = commentController;
+}
+	module.exports = commentController;

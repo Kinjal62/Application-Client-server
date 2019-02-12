@@ -1,0 +1,87 @@
+.img-rounded{
+	height: 50px;
+	width: 50px;
+	border-radius: 100%;
+	display: block;
+	/*margin: 0px auto;*/
+	margin-top: 2px;
+	margin-bottom: 50px;
+	margin-left: -12px;
+	position: absolute;
+	padding: 2px;
+	/*	background-color: rgba(255,255,255,0.75);*/
+	background-color: #fff;
+}
+.date_time{
+	margin-top: 10px;
+	margin-left:45px;
+	text-align: left;
+}
+.name{
+	margin-top: 10px;
+	margin-left:45px;
+	text-align: left;	
+}
+.col-md-4{
+	font-family: inherit;
+	font-size: 20px;
+}
+
+.panel-footer{
+	font-weight: 500;
+	background-color: none;
+	text-align: center;
+	position: relative;
+	color: #1c1e21;
+	display: inline-block;
+	width: 100%;
+}
+
+.panel-body{
+	border: 1px ridge;
+	margin: 3px;
+}
+.text_align{
+	position: absolute;
+	margin-right: -5px;
+	margin-top: -12px;
+	margin-left: 58px;
+}
+
+.comment_profile{
+	height: 34px;
+	width: 34px;
+	overflow: hidden;
+	border-radius: 50%;
+	float: left;
+	margin-right: 20px;
+}
+.comment_profile img {
+	min-height: 100%;
+	min-width: 100%;
+	max-height: 100%;
+	max-width: 100%;
+	object-fit: cover;
+}
+.comment_textbox{
+	width: calc(100% - 54px);
+	float: left;
+}
+.comment_section{
+	display: inline-block;
+	width: 100%;
+	padding: 10px;
+}
+.panel-footer i{
+	margin-right: 5px;
+}
+.profile_image{
+	min-height: 100%;
+	min-width: 100%;
+	max-height: 100%;
+	max-width: 100%;
+	object-fit: cover;
+}
+.form-control{
+	border-radius: 30px;
+}

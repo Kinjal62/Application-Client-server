@@ -28,3 +28,22 @@
     display: inline-block;
     width: 100%;
 }
+.img-rounded{
+    height: 40px;
+    width: 40px;
+    border-radius: 100%;
+    display: block;
+    /*margin: 0px auto;*/
+    margin-top: 4px;
+    margin-bottom: 50px;
+    margin-left: 5px;
+    position: absolute;
+    padding: 2px;
+    /*  background-color: rgba(255,255,255,0.75);*/
+    background-color: #fff;
+}
+.text_left{
+    text-align: left;
+    margin-left: 55px;
+    margin-top: 20px;
+}

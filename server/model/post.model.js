@@ -7,7 +7,7 @@ var PostSchema = new Schema({
 	publish: Boolean,
 	fileName: String,
 	like: [{type: Schema.Types.ObjectId, ref: 'users'}],
-	comment : []
+	comment : [{type: Schema.Types.ObjectId, ref: 'comment'}]
 });
 
 module.exports = mongoose.model('post', PostSchema); 
