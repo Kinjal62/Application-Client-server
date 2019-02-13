@@ -35,8 +35,8 @@ app.post('/user/add-friend', userController.followUser);
 app.post('/user/unfollow-friend', userController.unFollowUser);
 app.get('/user/:id', userController.getUserById);
 app.get('/user/get-friend/:requestedUser',userController.getAllFriend);
-
 app.post('/user/profile-photo',userController.uploadFile);
+app.put('/user', userController.updateUser);
 
 app.post('/post', postController.addPost);
 app.post('/post', postController.addFriend);
@@ -50,8 +50,8 @@ app.get('/post', postController.getPosts);
 app.post('/post/upload-image',postController.uploadFile);
 app.post('/message', messageController.getAllMessage);
 app.post('/post/like',postController.like);
-app.post('/post/add-comment',commentController.addComments);
-app.get('/post/:userId',commentController.getComments);
+app.post('/comment/add-comment',commentController.addComments);
+app.get('/comment/get-comment/:id',commentController.getComments);
 
 io.on('connection', (socket) => {
 	console.log('user connected');

@@ -1,13 +1,17 @@
 <app-header></app-header>
-<div class="col-sm-12" style="margin-top: 30px">
-	<div class="serach_container">
+<div class="col-sm-6 col-sm-offset-3" style="margin-top: 30px">
 	<form>
-		<input [(ngModel)]="key" id="key" type="text" placeholder="Search.." name="key">
-		<button type="submit" class="serch_btn" (click)="searchUser()"><i class="fa fa-search"></i></button>
+		<div class="input-group">
+			<input type="text" class="form-control" placeholder="Search" [(ngModel)]="key" id="key"  name="key" type="search">
+			<div class="input-group-btn">
+				<button type="submit" class="serch_btn" (click)="searchUser()">
+					<i class="fa-search fa-search"></i>
+				</button>
+			</div>
+		</div>
 	</form>
 </div>
-</div>
-<div class="container col-sm-6">
+<div class="container col-sm-6  col-sm-offset-3">
 	<table class="table" *ngIf="users">
 		<thead>
 			<th>First Name</th>

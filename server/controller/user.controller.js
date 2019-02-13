@@ -126,5 +126,12 @@ userController.uploadFile = function(req,res){
 		}
 	});
 }	
+userController.updateUser = function(req,res){
 
+	var userid = req.body.userid;
+	userModel.findByIdAndUpdate({_id: userid},req.body,{upsert:true},function(err,updatedUser){
+		console.log(updatedUser);
+		res.send(updatedUser);
+	})
+}
 module.exports = userController;

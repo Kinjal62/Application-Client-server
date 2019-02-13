@@ -68,9 +68,10 @@ postController.getFriendPost = function(req,res){
 			res.status(500).send(err);
 		}
 		postModel.find({'userId': {$in: result.friend}})
+		.populate('userId')
 		.populate('comment')
-		.populate({path: 'comment', populate:'userId'})
-		.populate({path: 'comment', populate: 'comment'})
+		// .populate({path: 'comment', populate:'userId'})
+		// .populate({path: 'comment', populate: 'comment'})
 		// .select('-friend')
 		.exec((err,posts)=>{
 			if(err){res.status(500).send(err);

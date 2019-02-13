@@ -62,17 +62,10 @@ export class PostService {
 			postId : postid,
 			comment : comment
 		}
-		return this.http.post("http://localhost:8000/post/add-comment",body);
+		return this.http.post("http://localhost:8000/comment/add-comment",body);
 	}
-	getComments(id,postid,comment){
-		console.log("Id===>",id);
-		console.log("postId=========>",postid);
-		console.log("comment======>",comment);
-		var body ={
-			userId : id,
-			postId : postid,
-			comment : comment
-		}
-		return this.http.post("http://localhost:8000/post/get-comment",body);
-	}	
+	// getComments(postId){
+	// 	console.log("getcomment",postId);
+	// 	return this.http.get("http://localhost:8000/comment/get-comment/"+postId);
+	// }	
 }

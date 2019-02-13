@@ -3,6 +3,8 @@ import { PostService } from '../post.service';
 import { Router } from '@angular/router';
 import { map } from 'rxjs/operators';
 import { UserService } from '../user.service';
+import * as _ from 'lodash';
+
 @Component({
 	selector: 'app-feeds',
 	templateUrl: './feeds.component.html',
@@ -16,7 +18,8 @@ export class FeedsComponent implements OnInit {
 	like : any;
 	comment : any;
 	friends : [];
-	user : [];
+	currentUser = JSON.parse(localStorage.getItem('login'))
+	
 	constructor(public _postService: PostService, public router: Router, public _userService: UserService) { }
 
 	ngOnInit() {
@@ -56,24 +59,24 @@ export class FeedsComponent implements OnInit {
 			console.log("error===>",error);
 		});
 	}
-	addComment(postid, comment) {
+	addComment(index, postid, comment) {
 		var id = JSON.parse(localStorage.getItem('login'))._id;
 		//console.log(this.post);
-		this._postService.addComments(id,postid,comment).subscribe(res=>{
+		this._postService.addComments(id,postid._id,comment).subscribe(res=>{
 			console.log("response======>",res);
-			this.comment = res;
+			this.friendsPost[index].comment.push(res);
 		},err=>{
 			console.log("error======>",err);
 		})	
 	}
-	getComment(postid, comment){
-		var id = JSON.parse(localStorage.getItem('login'))._id;
-		this._postService.getComments(id,postid,comment).subscribe(res=>{
-			console.log("response=======>",res);
-			this.comment = res;
-		},err=>{
-			console.log("error========>",err);
-		})
-	}
+	// getComment(postId){
+	// 	// var id = JSON.parse(localStorage.getItem('login'))._id;
+	// 	this._postService.getComments(postId).subscribe((res:any)=>{
+	// 		console.log("response=======>",res);
+	// 		// this.comment = res;
+	// 	},err=>{
+	// 		console.log("error========>",err);
+	// 	})
+	// }
 }
 

@@ -8,6 +8,8 @@ commentController.addComments = function(req,res){
 	console.log("UserId==========>",userId);
 	var postId = req.body.postId;
 	console.log("postId============>",postId);
+	var comment = req.body.comment;
+	console.log("commentid",comment);
 	var comment = new commentModel(req.body);
 	console.log("comment======>",comment);
 	

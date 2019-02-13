@@ -18,10 +18,10 @@
 .chat_content .text-left {
     font-size: 20px;
     font-weight: 600;
-    background-color: #337ab7;
-    padding: 20px;
+    /*background-color: #337ab7;*/
+    padding: 4px;
     border-radius: 6px 6px 0px 0px;
-    color: #fff;
+    /*color: #fff;*/
     text-transform: capitalize;
 }
 .chat_inner{
@@ -46,4 +46,37 @@
     text-align: left;
     margin-left: 55px;
     margin-top: 20px;
+}
+.input-group-append{
+    width: 50px; 
+    float: left;
+}
+/*.btn{
+    width: 100%;
+    padding: 7px;
+}*/
+.input-group{
+    width: 100%;
+}
+.form-control{
+    width: 100%; 
+    float: left;
+    border-radius: 10px;
+}
+.chat_inner .list-group-item{
+        width: 60%; 
+        margin: 10px 0;
+}
+.panel-heading{
+    border-block-end: inherit;
+    padding: 0px 10px;
+}
+.panel-body{
+    border-block-end: inherit;
+}
+.panel-group{
+    border-radius: 20px 20px 0px 0px;
+}
+.list-group-item{
+    padding: 0px 11px;
 }

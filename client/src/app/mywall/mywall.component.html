@@ -1,5 +1,5 @@
 <app-header></app-header>
-<div class="col-md-11 col-md-offset-0" style="padding-bottom: 30px;">
+<div class="col-sm-11 col-sm-offset-0" style="padding-bottom: 30px;">
   <form #f="ngForm" *ngFor="let user of users; let i=index">
     <div class="cover_image">
       <img src="http://localhost/social-media/server{{user.cover}}" onerror="this.src='assets/p2.jpeg'">
@@ -15,7 +15,7 @@
         <h2>{{user.fname}} {{user.lname}}</h2>
       </div>
       <div class="update_profile">
-        <input type="button" value="Edit Profile">
+        <input type="button" value="Edit Profile" (click)="updateProfile()">
       </div>
     </div>
 
@@ -30,7 +30,7 @@
     </div>
 
     <div class="row">
-      <div class="col-md-6">
+      <div class="col-sm-6">
         <div class="form-group">  
           <label class="control-label">First Name:
             <input [(ngModel)]="user.fname" class="form-control" type="text" name="fname" required="required">
@@ -38,7 +38,7 @@
         </div>
       </div>
 
-      <div class="col-md-6">
+      <div class="col-sm-6">
         <div class="form-group">
           <label class="control-label">Last Name:
             <input [(ngModel)]="user.lname" class="form-control" type="text" name="lname" required="required">
@@ -46,7 +46,7 @@
         </div>
       </div>
 
-      <div class="col-md-6">
+      <div class="col-sm-6">
         <div class="form-group">
           <label class="control-label">DOB:
             <input [(ngModel)]="user.dob" class="form-control" type="text" name="dob">
@@ -54,7 +54,7 @@
         </div>
       </div>
 
-      <div class="col-md-6">
+      <div class="col-sm-6">
         <div class="form-group">
           <label class="control-label">Email:
             <input [(ngModel)]="user.email" class="form-control" type="email" name="email" required="required">

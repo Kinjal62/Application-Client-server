@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
 var Schema	= mongoose.Schema;
 var PostSchema = new Schema({
-	userId: [{type: Schema.Types.ObjectId, ref: 'users'}],
+	userId: {type: Schema.Types.ObjectId, ref: 'users'},
 	content: String,
 	datetime: Date,
 	publish: Boolean,

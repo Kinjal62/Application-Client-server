@@ -58,5 +58,11 @@ export class UserService {
 		formData.append("change",changeType);
 		formData.append("uploadFile",file[0]);
 		return this.http.post("http://localhost:8000/user/profile-photo", formData);
- } 
+	} 
+
+	updateUser(body){
+		console.log(body);
+		return this.http.put("http://localhost:8000/user",body);
+	}
+
 }

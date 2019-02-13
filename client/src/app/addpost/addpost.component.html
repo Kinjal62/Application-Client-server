@@ -1,18 +1,33 @@
 <app-header></app-header>
-<div class="col-sm-12" style="border:1px solid; margin-top: 20px; padding: 15px;">
-	<table class="table-bordered">
-		<tbody>
-			<tr>
-				<td><i class="fa fa-edit">Create Post</i></td>
-				<td><i class="fa fa-camera">Photo/Video</i></td>
-			</tr>
-		</tbody>
-	</table>
-	<form #f="ngForm">
-		<div class="form-group">
-			<textarea [(ngModel)]="post.content" name="content" class="form-control" rows="5"></textarea>
-		</div>
-		<input type="file" name="uploadFile" [(ngModel)]="post.fileName" (change)="changeFile($event)">
-		<button type="submit" class="btn btn-primary" (click)="addPostContent(post); f.resetForm()">Submit</button>
-	</form>
-</div><br>
+<div class="col-sm-6 col-sm-offset-3">
+	<div class="panel-group">
+		<form #f="ngForm">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h5>Create Post</h5>
+				</div>
+				<div class="col-sm-12">
+					<div class="panel-body">
+						<div class="col-sm-1">
+							<div class="profile_section">
+								<div class="profile_image">
+									<img src="http://localhost/social-media/server{{currentUser.fileName}}" class="img-responsive">
+								</div>
+							</div>
+						</div>
+						<div class="col-sm-11">
+							<div class="form-group">
+								<textarea [(ngModel)]="post.content" name="content" placeholder="Write Something Here..."class="form-control" rows="5" width="100%"></textarea>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="panel-footer">
+					<input type="file" name="uploadFile" [(ngModel)]="post.fileName" (change)="changeFile($event)">
+					<br>
+					<button type="submit" class="btn btn-primary" (click)="addPostContent(post); f.resetForm()">Submit</button>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>

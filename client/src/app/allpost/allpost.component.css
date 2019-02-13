@@ -20,13 +20,16 @@
 .name{
 	margin-top: 10px;
 	margin-left:45px;
-	text-align: left;	
+	text-align: left;
+	text-transform: capitalize;	
 }
 .col-md-4{
 	font-family: inherit;
 	font-size: 20px;
 }
-
+.usercomment{
+	text-transform: capitalize;
+}
 .panel-footer{
 	font-weight: 500;
 	background-color: none;
@@ -35,11 +38,13 @@
 	color: #1c1e21;
 	display: inline-block;
 	width: 100%;
+	border-block-end: inherit;
 }
 
 .panel-body{
 	border: 1px ridge;
 	margin: 3px;
+	border-block-end: inherit;
 }
 .text_align{
 	position: absolute;
@@ -70,10 +75,12 @@
 .comment_section{
 	display: inline-block;
 	width: 100%;
-	padding: 10px;
+	padding: 6px;
+
 }
 .panel-footer i{
 	margin-right: 5px;
+
 }
 .profile_image{
 	min-height: 100%;

@@ -3,7 +3,7 @@ import { UserService } from '../user.service';
 import { Router } from '@angular/router';
 declare var $:any;
 import * as _ from 'lodash';
-
+import { DropEvent } from 'angular-draggable-droppable';
 @Component({
 	selector: 'app-connection',
 	templateUrl: './connection.component.html',
@@ -43,7 +43,7 @@ export class ConnectionComponent implements OnInit {
 		})
 		console.log("data",_id);
 	}
-	@HostListener('drop',['$event']) dragOver(event){
+	@HostListener('drop',['$event']) onDragOver(event){
 		event.preventDefault();
 	}
 	

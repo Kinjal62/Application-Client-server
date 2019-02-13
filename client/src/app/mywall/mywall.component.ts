@@ -43,4 +43,13 @@ export class MywallComponent implements OnInit {
 			console.log("errrorrrrrr====>",error);
 		});  
 	}
+	
+	updateProfile(){
+		this._userService.updateUser(this.user).subscribe(res=>{
+			console.log(res);
+		},error=>{
+			console.log(error);
+		});
+	}
+	
 }

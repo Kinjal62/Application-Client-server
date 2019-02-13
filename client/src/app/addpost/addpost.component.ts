@@ -11,7 +11,7 @@ import { Observable } from 'rxjs';
 export class AddpostComponent implements OnInit {
 
 post = {content : "",datetime: new Date(), publish: "true", fileName: ""};
-
+currentUser = JSON.parse(localStorage.getItem('login'))
 posts = [];
 files : FileList;
   constructor(public _postService: PostService, public router: Router) { }
