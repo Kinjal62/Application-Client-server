@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule} from '@angular/forms';
+import { FlexLayoutModule } from '@angular/flex-layout';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SignupComponent } from './signup/signup.component';
@@ -15,6 +16,7 @@ import { FeedsComponent } from './feeds/feeds.component';
 import { SearchComponent } from './search/search.component';
 import { AllpostComponent } from './allpost/allpost.component';
 import { ChatService } from './chat.service';
+import { SidenavComponent } from './sidenav/sidenav.component';
 
 
 @NgModule({
@@ -29,10 +31,12 @@ import { ChatService } from './chat.service';
     ConnectionComponent,
     FeedsComponent,
     SearchComponent,
-    AllpostComponent   
+    AllpostComponent,
+    SidenavComponent   
   ],
   imports: [
     BrowserModule,
+    FlexLayoutModule,
     AppRoutingModule,
     FormsModule,
     HttpClientModule

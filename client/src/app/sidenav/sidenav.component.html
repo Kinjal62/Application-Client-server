@@ -1,0 +1,19 @@
+<div class="sidenav">
+	<ul class="list-group">
+	<div *ngFor="let user of friends, let i=index">
+		<li class="list-group-item" (click)="openModel(user)">	
+			<img src="http://localhost/social-media/server{{user.fileName}}" class="img-rounded">
+			<h4 class="text_left">{{user.fname}} {{user.lname}}</h4>
+		</li>
+	</div>
+
+	<li class="list-group-item"><a routerLink="/mywall">Mywall</a></li>
+	<li class="list-group-item"><a routerLink="/connection">Connection</a></li>
+	<li class="list-group-item"><a routerLink="/chat">Chat</a></li>
+	<li class="list-group-item"><a routerLink="/feeds">Feeds</a></li>
+	<li class="list-group-item"><a routerLink="/allpost">AllPost</a></li>
+	<li class="list-group-item"><a routerLink="/addpost">AddPost</a></li>
+	<li class="list-group-item"><a routerLink="/search">Search</a></li>
+	<li class="list-group-item"><a (click)="onLogout()">LogOut</a></li>
+</ul>
+</div>

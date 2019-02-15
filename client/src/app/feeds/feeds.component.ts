@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { map } from 'rxjs/operators';
 import { UserService } from '../user.service';
 import * as _ from 'lodash';
+declare var $ : any;
 
 @Component({
 	selector: 'app-feeds',
@@ -19,11 +20,23 @@ export class FeedsComponent implements OnInit {
 	comment : any;
 	friends : [];
 	currentUser = JSON.parse(localStorage.getItem('login'))
-	
+	posts: any[] = [];
 	constructor(public _postService: PostService, public router: Router, public _userService: UserService) { }
 
 	ngOnInit() {
 		this.getFriendsPost();
+
+		setTimeout(function () {
+			$('.grid').masonry({
+				itemSelector: '.grid-item'
+			});
+		}, 1000);
+
+		$(document).on("resize", function(){
+			$('.grid').masonry({
+				itemSelector: '.grid-item'
+			});
+		});
 	}
 	
 	getFriendsPost(){
@@ -69,14 +82,10 @@ export class FeedsComponent implements OnInit {
 			console.log("error======>",err);
 		})	
 	}
-	// getComment(postId){
-	// 	// var id = JSON.parse(localStorage.getItem('login'))._id;
-	// 	this._postService.getComments(postId).subscribe((res:any)=>{
-	// 		console.log("response=======>",res);
-	// 		// this.comment = res;
-	// 	},err=>{
-	// 		console.log("error========>",err);
-	// 	})
-	// }
+	deletePosts(post,i){
+		console.log(post);
+		this._postService.deletePost(post._id);
+		this.posts.splice(i,1);
+	}
 }
 

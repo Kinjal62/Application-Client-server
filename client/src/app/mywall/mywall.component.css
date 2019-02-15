@@ -7,16 +7,17 @@ label i{
 #cover{
 	position: absolute;
 	top: 5%;
-	left: 28%;
-	
+	left: 28%;	
 }
+
 .cover_image{
 	width: 100%;
 	height: 400px;
 	position: relative;
 	overflow: hidden;
-	border-radius: 10px 10px 0px 0px;
+	border-radius: 10px 10px 10px 10px;
 	border:1px solid #000;
+	margin-top: 30px;
 
 }
 .cover_image img{
@@ -51,7 +52,7 @@ label i{
 .user_name{
 	position: absolute;
 	bottom: -15%;
-	left: 28%;
+	left: 33%;
 	transform: translate(-50%, -50%);
 	padding: 20px;
 	color: #fff;

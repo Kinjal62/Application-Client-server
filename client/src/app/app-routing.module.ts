@@ -19,7 +19,7 @@ const routes: Routes = [
 { path: 'chat', component: ChatComponent},
 { path: 'allpost', component: AllpostComponent},
 { path: 'addpost', component: AddpostComponent},
-{ path: 'search', component: SearchComponent}];
+{ path: 'search/:key', component: SearchComponent}];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

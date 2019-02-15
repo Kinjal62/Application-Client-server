@@ -1,33 +1,71 @@
 <app-header></app-header>
-<div class="col-sm-6 col-sm-offset-3">
-	<div class="panel-group">
-		<form #f="ngForm">
-			<div class="panel panel-default">
-				<div class="panel-heading">
-					<h5>Create Post</h5>
-				</div>
-				<div class="col-sm-12">
-					<div class="panel-body">
-						<div class="col-sm-1">
+<div class="col-sm-2">
+	<app-sidenav></app-sidenav>
+</div>
+<div class="col-sm-10">
+	<div class="col-sm-6 main">
+		<div class="panel-group">
+			<form #f="ngForm">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<div class="col-sm-10">
 							<div class="profile_section">
 								<div class="profile_image">
 									<img src="http://localhost/social-media/server{{currentUser.fileName}}" class="img-responsive">
 								</div>
+								<div class="profile_name_and_time">
+									<h4 class="name">{{currentUser.fname}} {{currentUser.lname}}
+									</h4>
+								</div>
 							</div>
 						</div>
-						<div class="col-sm-11">
-							<div class="form-group">
-								<textarea [(ngModel)]="post.content" name="content" placeholder="Write Something Here..."class="form-control" rows="5" width="100%"></textarea>
+						<div class="col-sm-2">
+							<div class="dropdown">
+								<span class="glyphicon glyphicon-option-vertical dropdown-toggle" data-toggle="dropdown"></span>
+								<ul class="dropdown-menu list-group">
+									<li class="list-group-item">Disable Comment</li>
+									<li class="list-group-item">disable reshare</li>
+									<li class="list-group-item">Turn on notification for this post</li>	
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="col-sm-12">
+						<div class="panel-body">
+							<div class="col-sm-11">
+								<div class="form-group">
+									<textarea [(ngModel)]="post.content" name="content" placeholder="Write Something Here..."class="form-control" rows="5" width="100%"></textarea>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="panel-footer">
+						<div class="icon">
+							<div class="update_pic col-sm-2">
+								<div class="form-group">
+									<label for="profile"><i class="fa fa-camera" aria-hidden="true"></i></label>
+									<input type="file" multiple="true" id="profile" name="fileUpload" (change)="changeFile($event,'profile')" [(ngModel)]="post.fileName" hidden="true" style="display:none;">
+								</div>
+							</div>
+							<div class="Video col-sm-2">
+								<span class="glyphicon glyphicon-facetime-video"></span>
+							</div>
+							<div class="col-sm-2">
+								<i class="fa fa-tag" aria-hidden="true"></i>
+							</div>
+						</div>
+						<!-- <input type="file" name="uploadFile" [(ngModel)]="post.fileName" (change)="changeFile($event)"> -->
+						<div class="Post_btn col-sm-12">
+							<div class="col-sm-2 text-right">
+								<input type="submit" (click)="f.resetForm()" value="Cancel">
+							</div>
+							<div class="col-sm-2 text-right">
+								<input type="submit" (click)="addPostContent(post); f.resetForm()" value="Post">
 							</div>
 						</div>
 					</div>
 				</div>
-				<div class="panel-footer">
-					<input type="file" name="uploadFile" [(ngModel)]="post.fileName" (change)="changeFile($event)">
-					<br>
-					<button type="submit" class="btn btn-primary" (click)="addPostContent(post); f.resetForm()">Submit</button>
-				</div>
-			</div>
-		</form>
+			</form>
+		</div>
 	</div>
 </div>

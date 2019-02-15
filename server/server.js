@@ -40,7 +40,7 @@ app.put('/user', userController.updateUser);
 
 app.post('/post', postController.addPost);
 app.post('/post', postController.addFriend);
-app.delete('/post', postController.deletePost);
+app.delete('/post/:id', postController.deletePost);
 app.put('/post', postController.updatePost);
 // app.get('/post/:id', postController.getPostById);
 app.get('/post/user/:userId', postController.getAllPost);

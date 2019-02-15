@@ -1,40 +1,44 @@
 <app-header></app-header>
-<div class="row">
-	<div class="col-sm-4">
-		<ul class="list-group">
-			<div *ngFor="let user of friends, let i=index">
-				<li class="list-group-item" (click)="openModel(user)">	
-					<img src="http://localhost/social-media/server{{user.fileName}}" class="img-rounded">
-					<h4 class="text_left">{{user.fname}} {{user.lname}}</h4>
-				</li>
-			</div>
-		</ul>
-	</div>
+<div class="col-sm-2">
+	<app-sidenav></app-sidenav>
+</div>
+<div class="col-sm-10">
+	<div class="row">
+		<div class="col-sm-3 col-sm-offset-1 main">
+			<ul class="list-group">
+				<div *ngFor="let user of friends, let i=index">
+					<li class="list-group-item" (click)="openModel(user)">	
+						<img src="http://localhost/social-media/server{{user.fileName}}" class="img-rounded">
+						<h4 class="text_left">{{user.fname}} {{user.lname}}</h4>
+					</li>
+				</div>
+			</ul>
+		</div>
 
-	<div class="col-sm-4 col-sm-offset-4">
-		<div class="panel-group">
-			<div class="chat_content" [hidden]="!user">
-				<div class="panel panel-default">
-					<div class="panel-heading">
-						<div class="text-left" *ngIf="user"><img src="http://localhost/social-media/server{{user.fileName}}" class="img-rounded">
-							<h4 class="text_left">{{user.fname}} {{user.lname}}</h4>
-						</div>
-					</div>
-
-					<div class="panel-body">
-						<ul id="chat" class="list-group" *ngIf="messages.length">
-							<div class="chat_inner">
-								<li class="list-group-item" *ngFor="let msg of messages;" [ngStyle]="{'text-align': msg.srcId==currentUser._id?'right':'left', 'float': msg.srcId==currentUser._id?'right':'left'}">
-									<div>{{msg.msg}}</div>
-								</li>
+		<div class="col-sm-4 col-sm-offset-4">
+			<div class="panel-group">
+				<div class="chat_content" [hidden]="!user">
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<div class="text-left" *ngIf="user"><img src="http://localhost/social-media/server{{user.fileName}}" class="img-rounded">
+								<h4 class="text_left">{{user.fname}} {{user.lname}}</h4>
 							</div>
-						</ul>
-					</div>
+						</div>
 
-					<div class="panel-footer">
-						<div class="input-group">
-							<form #f="ngForm">
-								<input type="text" class="form-control" placeholder="Type a message..." name="message" [(ngModel)]="message" required="required" autofocus="autofocus" (keyup.enter)="sendMessage(user._id); f.resetForm()">
+						<div class="panel-body">
+							<ul id="chat" class="list-group" *ngIf="messages.length">
+								<div class="chat_inner">
+									<li class="list-group-item" *ngFor="let msg of messages;" [ngStyle]="{'text-align': msg.srcId==currentUser._id?'right':'left', 'float': msg.srcId==currentUser._id?'right':'left'}">
+										<div>{{msg.msg}}</div>
+									</li>
+								</div>
+							</ul>
+						</div>
+
+						<div class="panel-footer">
+							<div class="input-group">
+								<form #f="ngForm">
+									<input type="text" class="form-control" placeholder="Type a message..." name="message" [(ngModel)]="message" required="required" autofocus="autofocus" (keyup.enter)="sendMessage(user._id); f.resetForm()">
 								<!-- <div class="input-group-append">
 									<button type="submit" class="btn btn-sm btn-success" type="button" (click)="sendMessage(user._id); f.resetForm()">send</button>
 								</div> -->
@@ -46,4 +50,5 @@
 			</div>
 		</div>
 	</div>
+</div>
 </div>

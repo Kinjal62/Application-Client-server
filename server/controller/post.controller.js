@@ -24,8 +24,8 @@ postController.addFriend = function(req,res){
 postController.deletePost = function(req,res){
 	var postid = req.params.id;
 	postModel.remove({_id:postid}, function(err,deletePost){
-		console.log(err,deleteUser)
-		res.send(deleteUser);
+		console.log(err,deletePost)
+		res.send(deletePost);
 	})
 }
 

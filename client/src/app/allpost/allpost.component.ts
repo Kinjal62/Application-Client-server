@@ -4,6 +4,8 @@ import { Router } from '@angular/router';
 import { map } from 'rxjs/operators';
 import * as _ from 'lodash';
 import { UserService } from '../user.service';
+declare var $ : any;
+
 @Component({
 	selector: 'app-allpost',
 	templateUrl: './allpost.component.html',
@@ -21,6 +23,17 @@ export class AllpostComponent implements OnInit {
 
 	ngOnInit() {
 		this.getAllPost();
+		setTimeout(function () {
+			$('.grid').masonry({
+				itemSelector: '.grid-item'
+			});
+		}, 1000);
+
+		$(document).on("resize", function(){
+			$('.grid').masonry({
+				itemSelector: '.grid-item'
+			});
+		});
 		
 	}
 	getAllPost(){ 
@@ -53,4 +66,13 @@ export class AllpostComponent implements OnInit {
 			console.log("error======>",err);
 		})	
 	}
-}
+	deletePosts(post,i){
+		console.log(post);
+		this._postService.deletePost(post._id);
+		this.posts.splice(i,1);
+	}
+	// updatePosts(post){
+		// 	console.log(post);
+		// 	this.router.navigate(['updatepost',post._id]);
+		// }
+	}

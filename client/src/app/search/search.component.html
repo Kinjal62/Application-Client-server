@@ -1,16 +1,8 @@
 <app-header></app-header>
-<div class="col-sm-6 col-sm-offset-3" style="margin-top: 30px">
-	<form>
-		<div class="input-group">
-			<input type="text" class="form-control" placeholder="Search" [(ngModel)]="key" id="key"  name="key" type="search">
-			<div class="input-group-btn">
-				<button type="submit" class="serch_btn" (click)="searchUser()">
-					<i class="fa-search fa-search"></i>
-				</button>
-			</div>
-		</div>
-	</form>
+<div class="col-sm-2">
+	<app-sidenav></app-sidenav>
 </div>
+<div class="col-sm-10">
 <div class="container col-sm-6  col-sm-offset-3">
 	<table class="table" *ngIf="users">
 		<thead>
@@ -28,4 +20,4 @@
 		</tbody>
 	</table>
 </div>
-
+</div>

@@ -1,13 +1,133 @@
-.navbar{
-	border-bottom: 1px solid #29487d;
-	background-color: #4267b2;
+
+.img-responsive{
+    height: 35px;
+    width: 35px;
+    margin-top: -8px;
+}
+.serch_btn{
+    width:30px;
+    height:33px;
+}
+.header_logo {
+    width:282px;
+    float: left;
+    padding: 23px 24px 22px 26px;
+    display: inline-block;   
+}
+.header_logo .img_responsive{
+    height:45px; 
+    width:45px;
 }
 
-.navbar-default .navbar-nav li a{
-	color: #fff;
+.header_section{
+    background-color: #4990e2;
+    float: left;
+    width: 100%;
 }
-.img-responsive{
-	height: 35px;
-	width: 35px;
-	margin-top: -8px;
+.header_right{
+    float: right;
+    display: inline-block;
+    margin-top: 17px;
+}
+.header_right ul{
+    display: inline-block;
+    vertical-align: middle;
+}
+.header_right ul li{
+    display: inline-block;
+    color: #fff;
+    font-size: 16px;
+    font-family: 'BrandonGrotesqueRegular';
+    border-radius: 3px;
+    padding: 9px 20px;
+    margin: 0px 17px 0 0;
+}
+.header_right ul li.login{
+    background-color:  #327acc;
+}
+.header_right ul li.login a{
+    color:#fff;
+}
+.header_right ul li.logout a{
+    color:#fff;
+}
+.header_right ul li.logout{
+    background-color: #327acc;
+}
+.header_right ul li.register a{
+    color:#4990e2;
+}
+.header_right ul li.register{
+    background-color:  #fff;
+}
+.header_right button{
+    display: inline-block;
+    border: 0;
+    height: 34px;
+    margin-right: 29px;
+    width: 38px;
+    background-color: transparent;
+    cursor: pointer;
+    padding: 5px;
+    background-position: -31px 7px;
+    border-radius: 3px;
+    background-repeat: no-repeat;
+    vertical-align: middle;
+}
+.header_right button.select_img{
+    background-position: 8px 7px;
+    background-color: #fff;
+}
+.search_submit {
+    display: inline-block;
+}
+.mobile_serch{
+    display: none;
+}
+
+.search {
+    position: relative;
+    display: inline-block;
+}
+.search .header_submit{
+    background-image: url(/assets/images/header_search_icon.png);
+    padding: 0px;
+    margin: 0px;
+    height: 38px;
+    width: 43px;
+    float: left;
+    border: none;
+    outline: none;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    background-color: #fff;
+    margin-top: 16px;
+    border-radius: 3px;
+}
+.search .header_search{
+    height: 38px;
+    width: 493px;
+    float: left;
+    padding: 0px 0px 0px 11px;
+    color: #bbbbbb;
+    font-size: 13px;
+    background-repeat: no-repeat;
+    border: 0;
+    font-size: 18px;
+    font-family: 'BrandonGrotesqueRegular';
+    margin-top: 16px;
+}
+.search .header_search::placeholder{
+    color: #bbbbbb;
+}
+
+.header_search  {
+    float: left;
+    display: inline-block;
+}
+.header_search  .input_search{
+    padding: 20px;
+    border: 1px solid #ccc;
+    font-family: 'BrandonGrotesqueRegular';
+    width: 70%;
 }

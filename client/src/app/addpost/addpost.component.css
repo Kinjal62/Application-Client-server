@@ -20,6 +20,48 @@
 	padding: 6px;
 
 }
+.profile_name_and_time{
+	display: inline-block;
+	float: left;
+}
+.col-sm-4{
+	font-family: inherit;
+	font-size: 20px;
+}
+
+.panel-footer{
+	font-weight: 500;
+	background-color: none;
+	text-align: center;
+	position: relative;
+	color: #1c1e21;
+	display: inline-block;
+	width: 100%;
+}
+.profile_name_and_time h4 {
+	margin-top: 0px;
+}
 .panel-body{
-	border-block-end: inherit;
+	border: 1px ridge;
+	margin: 3px;
+}
+.panel-default>.panel-heading{
+	background-color: transparent;
+	display: inline-block;
+	width: 100%;
+}
+.panel.panel-default {
+	border-color: #6495ed;
+}
+.glyphicon{
+	font-size: 30px;	
+}
+.fa{
+	font-size: 28px;
+}
+.post_btn{
+	padding: 0 16px 0 0;
+}
+.panel-group{
+	padding: 5px;
 }

@@ -1,28 +1,8 @@
-.img-rounded{
-	height: 50px;
-	width: 50px;
-	border-radius: 100%;
-	display: block;
-	/*margin: 0px auto;*/
-	margin-top: 2px;
-	margin-bottom: 50px;
-	margin-left: -12px;
-	position: absolute;
-	padding: 2px;
-	/*	background-color: rgba(255,255,255,0.75);*/
-	background-color: #fff;
+.profile_name_and_time{
+	display: inline-block;
+	float: left;
 }
-.date_time{
-	margin-top: 10px;
-	margin-left:45px;
-	text-align: left;
-}
-.name{
-	margin-top: 10px;
-	margin-left:45px;
-	text-align: left;	
-}
-.col-md-4{
+.col-sm-4{
 	font-family: inherit;
 	font-size: 20px;
 }
@@ -35,9 +15,10 @@
 	color: #1c1e21;
 	display: inline-block;
 	width: 100%;
-	border-block-end: inherit;
 }
-
+.profile_name_and_time h4 {
+    margin-top: 0px;
+}
 .panel-body{
 	border: 1px ridge;
 	margin: 3px;
@@ -80,6 +61,14 @@
 
 }
 .profile_image{
+	height: 50px;
+	width: 50px;
+	margin-right: 20px;
+	border-radius: 50%;
+	overflow: hidden;
+	float: left;
+}
+.profile_image img{
 	min-height: 100%;
 	min-width: 100%;
 	max-height: 100%;
@@ -88,4 +77,18 @@
 }
 .form-control{
 	border-radius: 30px;
+}	
+.post_image img{
+	width: 100%;
+}
+.panel-default>.panel-heading{
+	background-color: transparent;
+	display: inline-block;
+	width: 100%;
+}
+.panel.panel-default {
+    border-color: #6495ed;
+}
+.panel-group{
+	padding: 5px;
 }

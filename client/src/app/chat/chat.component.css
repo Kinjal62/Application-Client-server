@@ -78,5 +78,11 @@
     border-radius: 20px 20px 0px 0px;
 }
 .list-group-item{
-    padding: 0px 11px;
+    padding: 7px 11px;
+}
+.list-group{
+    margin-left:36px;
+}
+.panel-footer{
+    background-color: #
 }

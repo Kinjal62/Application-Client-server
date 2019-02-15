@@ -1,20 +1,25 @@
-<nav class="navbar navbar-default">
-  <div class="container-fluid"> 
-    <div class="navbar-header">
-      <div class="navbar-brand"> 
-          <img src="../assets/images/facebook.png" class="img-responsive">
+<header>
+  <div class="header_section">    
+    <div class="header_logo">
+      <img src="../assets/images/facebook.png" alt="logo image" style="height:40px; width:40px;" class="img_responsive"/>
+    </div>    
+    <div class="header_right">
+      <ul>
+        <!-- <li class="login"><a href="#" id="login_popup" routerLink="/login">Login</a></li>
+          <li class="register"><a href="#" id="register_popup" routerLink="/signup">SignUp</a></li> --> 
+          <li class="logout"><a (click)="onLogout()">LogOut</a></li>                       
+        </ul> 
+        <button></button>
       </div>
-        <ul class="nav navbar-nav">
-          <li><a routerLink="/mywall">Mywall</a></li>
-          <li><a routerLink="/connection">Connection</a></li>
-          <li><a routerLink="/chat">Chat</a></li>
-          <li><a routerLink="/feeds">Feeds</a></li>
-          <li><a routerLink="/allpost">AllPost</a></li>
-          <li><a routerLink="/addpost">AddPost</a></li>
-          <li><a routerLink="/search">Search</a></li>
-          <li><a (click)="onLogout()">LogOut</a></li>
-        </ul>
-      </div>
-   
-  </div>
-</nav>
+      <div class="search_submit">
+        <a href="javascript:void(0)" class="mobile_serch"><img src="../assets/images/header_search_icon.png" alt="search"/></a>
+        <div class="search">
+          <form>
+            <input type="text" placeholder="Search..." class="header_search" [(ngModel)]="key" id="key"  name="key">
+            <input type="submit" value="" class="header_submit" (click)="searchUser()">
+          </form>
+        </div>
+      </div> 
+    </div>
+  </header>
+  <br>

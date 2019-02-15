@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../user.service';
 import * as _ from 'lodash';
+import { ActivatedRoute, ParamMap } from '@angular/router';
+import { Router } from "@angular/router";
 @Component({
   selector: 'app-search',
   templateUrl: './search.component.html',
@@ -11,11 +13,17 @@ export class SearchComponent implements OnInit {
   key;
   users : any;
   _id: any;
- myFriend=[];
-  constructor(public _userService: UserService) { }
+  myFriend=[];
+
+  constructor(public _userService: UserService, public route: ActivatedRoute) {
+    this.route.paramMap.subscribe((params:any)=>{
+      console.log(params);
+      this.key = params.params.key;
+      this.searchUser(this.key);
+    });
+  }
 
   ngOnInit() {
-
   }
   searchUser(key){
   	console.log("response",this.key);
@@ -29,9 +37,9 @@ export class SearchComponent implements OnInit {
         console.log(i);
       })
       
-  	},err=>{
-  		console.log("Error",err);
-  	})
+    },err=>{
+      console.log("Error",err);
+    })
   	console.log("details in file",this.key);
   }
 

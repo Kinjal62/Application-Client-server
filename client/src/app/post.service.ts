@@ -7,10 +7,14 @@ import { Observable, Subject } from 'rxjs';
 })
 export class PostService {
 	post : Subject<any>;
-	
+	removePost: Subject<any>;
+	filesToUpload: Array<File> = [];
 	constructor(public http:HttpClient) { 
 		this.post = <Subject<any>>new Subject();
-		
+		this.removePost = <Subject<any>>new Subject();
+	}
+	removeObservableOfUser(){
+		return this.removePost.asObservable();
 	}
 	getAllPostSimple(){
 		return this.http.get("http://localhost:8000/post"); 
@@ -35,6 +39,12 @@ export class PostService {
 		console.log(file);
 		console.log(data);
 		let formdata = new FormData();
+		let files: Array<File> = this.filesToUpload;
+		console.log(files);
+
+		for(let i =0; i < files.length; i++){
+		formdata.append("uploads[]", files[i], files[i]['name']);
+		}
 		data['userId'] = JSON.parse(localStorage.getItem('login'))._id;
 		formdata.append("uploadFile",file[0]);
 		formdata.append("content",data.content);
@@ -64,8 +74,14 @@ export class PostService {
 		}
 		return this.http.post("http://localhost:8000/comment/add-comment",body);
 	}
-	// getComments(postId){
-	// 	console.log("getcomment",postId);
-	// 	return this.http.get("http://localhost:8000/comment/get-comment/"+postId);
-	// }	
+	deletePost(id){
+		this.http.delete("http://localhost:8000/post/"+id).subscribe(res=>{
+			console.log(res);
+			this.removePost.next({
+				data:res
+			})
+		},err=>{
+			console.log(err);
+		});
+	}
 }

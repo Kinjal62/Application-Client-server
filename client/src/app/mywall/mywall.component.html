@@ -1,66 +1,89 @@
 <app-header></app-header>
-<div class="col-sm-11 col-sm-offset-0" style="padding-bottom: 30px;">
-  <form #f="ngForm" *ngFor="let user of users; let i=index">
-    <div class="cover_image">
-      <img src="http://localhost/social-media/server{{user.cover}}" onerror="this.src='assets/p2.jpeg'">
-      
-      <div class="update_cover">
-        <div class="form-group">
-          <label for="cover"><i class="fa fa-camera" aria-hidden="true"></i></label>
-          <input type="file" id="cover" name="fileUpload" (change)="changeFile($event,'cover')" hidden="true" style="display:none; margin-top: 150px;">
+<div class="col-sm-2">
+  <app-sidenav></app-sidenav>
+</div>
+<div class="col-sm-10">
+  <div class="col-sm-9 col-sm-offset-1 main" style="padding-bottom: 30px;">
+    <form #f="ngForm" *ngFor="let user of users; let i=index">
+      <div class="cover_image">
+        <img src="http://localhost/social-media/server{{user.cover}}" onerror="this.src='assets/p2.jpeg'">
+        
+        <div class="update_cover">
+          <div class="form-group">
+            <label for="cover"><i class="fa fa-camera" aria-hidden="true"></i></label>
+            <input type="file" id="cover" name="fileUpload" (change)="changeFile($event,'cover')" hidden="true" style="display:none; margin-top: 150px;">
+          </div>
+        </div>
+
+        <div class="user_name">
+          <h2>{{user.fname}} {{user.lname}}</h2>
+        </div>
+        <div class="update_profile">
+          <button type="button" value="Edit Profile" (click)="updateProfile()" data-toggle="modal" data-target="#myModal">Edit Profile</button>
         </div>
       </div>
 
-      <div class="user_name">
-        <h2>{{user.fname}} {{user.lname}}</h2>
-      </div>
-      <div class="update_profile">
-        <input type="button" value="Edit Profile" (click)="updateProfile()">
-      </div>
-    </div>
-
-    <div class="profile_picture">
-      <img src="http://localhost/social-media/server{{user.fileName}}" class="img-rounded" onerror="this.src='assets/p1.jpeg'"> 
-      <div class="update_pic">
-        <div class="form-group">
-          <label for="profile"><i class="fa fa-camera" aria-hidden="true"></i></label>
-          <input type="file" id="profile" name="fileUpload" (change)="changeFile($event,'profile')" hidden="true" style="display:none;">
-        </div>
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="col-sm-6">
-        <div class="form-group">  
-          <label class="control-label">First Name:
-            <input [(ngModel)]="user.fname" class="form-control" type="text" name="fname" required="required">
-          </label>
+      <div class="profile_picture">
+        <img src="http://localhost/social-media/server{{user.fileName}}" class="img-rounded" onerror="this.src='assets/p1.jpeg'"> 
+        <div class="update_pic">
+          <div class="form-group">
+            <label for="profile"><i class="fa fa-camera" aria-hidden="true"></i></label>
+            <input type="file" id="profile" name="fileUpload" (change)="changeFile($event,'profile')" hidden="true" style="display:none;">
+          </div>
         </div>
       </div>
 
-      <div class="col-sm-6">
-        <div class="form-group">
-          <label class="control-label">Last Name:
-            <input [(ngModel)]="user.lname" class="form-control" type="text" name="lname" required="required">
-          </label>
-        </div>
-      </div>
+      <!-- Modal -->
+      <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog">
 
-      <div class="col-sm-6">
-        <div class="form-group">
-          <label class="control-label">DOB:
-            <input [(ngModel)]="user.dob" class="form-control" type="text" name="dob">
-          </label>
-        </div>
-      </div>
+          <!-- Modal content-->
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title">Modal Header</h4>
+            </div>
+            <div class="modal-body">
+             <div class="row">
+              <div class="col-sm-6">
+                <div class="form-group">  
+                  <label class="control-label">First Name:
+                    <input [(ngModel)]="user.fname" class="form-control" type="text" name="fname" required="required">
+                  </label>
+                </div>
+              </div>
 
-      <div class="col-sm-6">
-        <div class="form-group">
-          <label class="control-label">Email:
-            <input [(ngModel)]="user.email" class="form-control" type="email" name="email" required="required">
-          </label>
-        </div>
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <label class="control-label">Last Name:
+                    <input [(ngModel)]="user.lname" class="form-control" type="text" name="lname" required="required">
+                  </label>
+                </div>
+              </div>
+
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <label class="control-label">DOB:
+                    <input [(ngModel)]="user.dob" class="form-control" type="text" name="dob">
+                  </label>
+                </div>
+              </div>
+
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <label class="control-label">Email:
+                    <input [(ngModel)]="user.email" class="form-control" type="email" name="email" required="required">
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div> 
       </div>
     </div>
   </form>   
+</div>
 </div>
