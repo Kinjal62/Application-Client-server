@@ -44,7 +44,7 @@
 							<div class="update_pic col-sm-2">
 								<div class="form-group">
 									<label for="profile"><i class="fa fa-camera" aria-hidden="true"></i></label>
-									<input type="file" multiple="true" id="profile" name="fileUpload" (change)="changeFile($event,'profile')" [(ngModel)]="post.fileName" hidden="true" style="display:none;">
+									<input type="file" multiple id="profile" name="uploadFile" (change)="changeFile($event)" [(ngModel)]="post.fileName" hidden="true" style="display:none;">
 								</div>
 							</div>
 							<div class="Video col-sm-2">

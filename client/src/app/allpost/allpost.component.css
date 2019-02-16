@@ -91,3 +91,47 @@
 .panel-group{
 	padding: 5px;
 }
+
+.post_frame{
+	width: 100%;
+	height: 500px;
+	border: 2px solid gray;
+}
+.image_box{
+	overflow: hidden;
+	position: relative;
+	border: 2px solid gray;
+    float: left;
+}
+.image_box img {
+    min-height: 100%;
+    min-width: 100%;
+    max-width: 100%;
+    object-fit: cover;
+}
+.single_image_layout .image_box {
+    height: 100%;
+    width: 100%;
+}
+.double_image_layout .image_box{
+	height: 100%;
+    width: 50%;
+}
+.three_image_layout .image_box:first-child{
+	height: 100%;
+    width: 50%;
+}
+.three_image_layout .image_box,
+.four_image_layout .image_box,
+.five_image_layout .image_box:first-child,
+.five_plus_image_layout .image_box:first-child,
+.five_image_layout .image_box:nth-child(2),
+.five_plus_image_layout .image_box:nth-child(2){
+	height: 50%;
+    width: 50%;
+}
+.five_image_layout .image_box,
+.five_plus_image_layout .image_box{
+	height: 50%;
+	width: 33.33%;
+}

@@ -1,5 +1,6 @@
 var userModel = require('../model/user.model');
 var postModel = require('../model/post.model');
+var async = require('async');
 let postController = {};
 
 postController.addPost = function(req,res){
@@ -83,41 +84,45 @@ postController.getFriendPost = function(req,res){
 }	
 postController.uploadFile = function(req,res){
 	console.log("uploadfile=======>",req.body);
+	var files = [];
+	
+	var userId = req.body.userId;
+	console.log("userId==========>>>>",userId);
+	var post_data = {
+		content : req.body.content,
+		datetime : req.body.datetime,
+		publish : req.body.publish,
+		fileName : files,
+		userId : req.body.userId
+	};
 
-	var sampleFile = req.files.uploadFile;
-	console.log("Sample File",sampleFile);
-	sampleFile.mv('./uploads/'+sampleFile.name,function(err,result){
-		if(err){
-			res.status(500).send(err);
-		}
-		else{
-			var userId = req.body.userId;
-			console.log("userId==========>>>>",userId);
-			var fileName = req.body.fileName;
-			console.log("fileName==========>>>",fileName);
-			var fileNameArr = fileName.split("\\");
-
-			console.log("fileNameArr======>>>>>>",fileNameArr);
-
-			fileName  = fileNameArr[2];
-			console.log("fileName", fileName);
-			var post_data = {
-				content : req.body.content,
-				datetime : req.body.datetime,
-				publish : req.body.publish,
-				fileName : "/uploads/"+fileName,
-				userId : req.body.userId
-			};
-
-			var postData = new postModel(post_data);
-			console.log("postData",postData);
-			postData.save(function(err,savedpost){
-				console.log(err,savedpost);
-				res.send(savedpost);
-			});
-			console.log(req.body);
+	var postData = new postModel(post_data);
+	console.log("postData",postData);
+	postData.save(function(error,savedpost){
+		if (error) {
+			return res.status(500).send(error);
+		}else{
+			for(var i = 0; i < req.files.uploadFile.length; i++){
+				console.log("sampleFile", req.files.uploadFile[i]);				
+				var sampleFile = req.files.uploadFile[i];
+				sampleFile.mv('./uploads/'+sampleFile.name, function(err) {
+					if (err){
+						return res.status(500).send(err);
+					}else{
+					}
+				});
+				var fileName = sampleFile.name;
+				var fileNameArr = fileName.split("\\");
+				fileName  = fileNameArr[2];
+				files.push("/uploads/"+sampleFile.name);
+				console.log(files);
+				savedpost.fileName = files;
+				savedpost.save();
+			}
+			res.status(200).send(savedpost);
 		}
 	});
+	console.log(req.body);
 }	
 
 postController.like = function(req,res){

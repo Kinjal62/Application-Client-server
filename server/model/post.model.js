@@ -5,7 +5,7 @@ var PostSchema = new Schema({
 	content: String,
 	datetime: Date,
 	publish: Boolean,
-	fileName: String,
+	fileName: [{type: String}],
 	like: [{type: Schema.Types.ObjectId, ref: 'users'}],
 	comment : [{type: Schema.Types.ObjectId, ref: 'comment'}]
 });

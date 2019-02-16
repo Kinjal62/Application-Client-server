@@ -36,9 +36,13 @@
 					</div>
 					<div class="col-sm-12">
 						<div class="panel-body">
-							{{post.content}}
-							<div *ngIf="post.fileName">
-								<img src="http://localhost/social-media/server{{post.fileName}}">
+							<h3>{{post.content}}</h3>
+							<div class="row">
+								<div *ngIf="post.fileName" [ngClass]=" 'post_frame'+' '+getImageLayoutClass(post.fileName.length)">
+									<div *ngFor="let image of post.fileName" class="image_box">
+											<img src="http://localhost/social-media/server{{image}}">
+									</div>
+								</div>
 							</div>
 						</div>
 					</div>

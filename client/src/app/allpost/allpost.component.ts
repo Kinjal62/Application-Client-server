@@ -42,10 +42,39 @@ export class AllpostComponent implements OnInit {
 		this._postService.getAllPost(userId).subscribe((posts:any)=>{
 			this.posts = posts;
 			console.log("Posts received = ",this.posts);
+
 		},(err)=>{
 			alert("There seems to be some error. please try again later.")
 			console.error("Error in getting post in ngInit",err);
 		});
+	}
+	getImageLayoutClass(length){
+		console.log(length);
+		switch (length) {
+			case 1:
+			// code...
+			return "single_image_layout";
+			break;
+
+			case 2:
+			return "double_image_layout";
+			break;
+
+			case 3:
+			return "three_image_layout";
+			break;
+			case 4:
+			return "four_image_layout";
+			break;
+			case 5:
+			return "five_image_layout";
+			break;
+
+			default:
+			// code...
+			return "five_plus_image_layout"
+			break;
+		}
 	}
 	likePost(postid){
 		var id = JSON.parse(localStorage.getItem('login'))._id;
